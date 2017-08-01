@@ -15,16 +15,22 @@
             <a href="~/Login.aspx">Login</a>
             <a href="~/Cadastro.aspx">Cadastro</a>
             <a href="~/Denunciar.aspx">Denunciar</a>
-            <a href="~/Sobre.aspx">Sobre</a>
-            <a href="~/Devdream.aspx">DevDream</a>
         </div>
     </div>
     <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
+    <div id="divFooter">
+        <a href="~/Termos.aspx">Termos</a>
+        <a href="~/Privacidade.aspx">Privacidade</a>
+        <a href="~/Seguranca.aspx">Seguran&ccedil;a</a>
+        <a href="https://github.com/oscarcasagrande/baddriver" target="_blank">C&oacute;digo fonte</a>
+        <a href="https://oscarcasagrande.wordpress.com/" target="_blank">Blog</a>
+        <a href="~/Sobre.aspx">Sobre</a>
+        <a href="~/Devdream.aspx">DevDream</a>
+    </div>
 </body>
 </html>
