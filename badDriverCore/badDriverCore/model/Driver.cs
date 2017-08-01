@@ -14,6 +14,6 @@ namespace badDriverCore.model
         public string Supplier { get; set; }
         public string Coloer { get; set; }
 
-        public Driver{}()
+        public Driver() { }
     }
 }
