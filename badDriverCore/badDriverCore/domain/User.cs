@@ -6,14 +6,79 @@ using System.Threading.Tasks;
 
 namespace badDriverCore.domain
 {
-    public class User
+    public static class User
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Nickname { get; set; }
-        public bool Active { get; set; }
+        public static model.User CreateUser(model.User user)
+        {
+            model.User result = new model.User();
 
-        public User() { }
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { }
+
+            return result;
+        }
+
+        public static model.User GetUserById(int id)
+        {
+            model.User result = new model.User();
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { }
+
+            return result;
+        }
+
+        public static model.User GetUserByIOrEmailOrUsernameAndPassword(int id, string email, string username, string password)
+        {
+            model.User result = new model.User();
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { }
+
+            return result;
+        }
+
+        public static bool ResetUserPasswordByEmailOrUsername(string email, string ussername)
+        {
+            bool result = false;
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { }
+
+            return result;
+        }
+
     }
 }

@@ -13,6 +13,7 @@ namespace badDriverCore.model
         public string Model { get; set; }
         public string Supplier { get; set; }
         public string Coloer { get; set; }
+        public List<string> Photos { get; set; }
 
         public Driver() { }
     }

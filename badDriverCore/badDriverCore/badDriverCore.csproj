@@ -44,11 +44,12 @@
     <Compile Include="domain\Driver.cs" />
     <Compile Include="domain\User.cs" />
     <Compile Include="model\Driver.cs" />
+    <Compile Include="model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\Email.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="service\" />
-    <Folder Include="utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
