@@ -46,6 +46,7 @@
     <Compile Include="model\Driver.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\DatabaseHelper.cs" />
     <Compile Include="utils\Email.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,22 @@ namespace badDriverCore.utils
 {
     public static class Email
     {
+        public static bool sendEmail()
+        {
+            bool result = false;
 
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { }
+
+            return result;
+        }
     }
 }
