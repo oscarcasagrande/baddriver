@@ -15,10 +15,59 @@ namespace badDriverCore.utils
         {
             NetworkCredential credential = new NetworkCredential();
 
-            credential.UserName = string.Empty;
-            credential.Password = string.Empty;
+            AppSettingsReader reader = new AppSettingsReader();
+
+            try
+            {
+                credential.UserName = reader.GetValue("username", typeof(string)).ToString();
+                credential.Password = reader.GetValue("password", typeof(string)).ToString();
+            }
+            catch (Exception ex)
+            {
+                Exception x = new Exception();
+                string messageError = string.Empty;
+
+                if (credential.UserName == null)
+                {
+                    messageError += "## credential.UserName is null. ";
+                }
+                if (credential.Password == null)
+                {
+                    messageError += "## credential.Password is null. ";
+                }
+                x = new Exception(messageError, ex.InnerException);
+
+                throw ex;
+            }
 
             return credential;
+        }
+
+        static SmtpClient getSmtpClient()
+        {
+            SmtpClient result = new SmtpClient();
+
+            AppSettingsReader reader = new AppSettingsReader();
+
+            result.DeliveryMethod = SmtpDeliveryMethod.Network;
+            result.Timeout = 100000;
+            result.UseDefaultCredentials = false;
+
+            try
+            {
+                result.Credentials = getEmailCredentials();
+                result.EnableSsl = (bool)(reader.GetValue("enableSsl", typeof(bool)));
+                result.Host = (reader.GetValue("smtpServer", typeof(string))).ToString();
+                result.Port = (int)(reader.GetValue("smtpPort", typeof(int)));
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return result;
         }
 
         public static bool sendEmail(string template, string to, string from, string subject, string message, bool isHtmlBody, List<KeyValuePair<string, string>> toFrom)
@@ -42,12 +91,15 @@ namespace badDriverCore.utils
 
                     mail.Body = message;
                     mail.Priority = MailPriority.Normal;
+
+                    SmtpClient smtpClient = getSmtpClient();
+
+                    smtpClient.Send(mail);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
             finally
             {

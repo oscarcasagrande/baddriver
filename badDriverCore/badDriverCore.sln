@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "badDriverWebMockup", "badDr
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseBadDriver", "DatabaseBadDriver\DatabaseBadDriver.sqlproj", "{DB274F6C-6B14-45D8-8B9F-CD533B1FC804}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backSimulatorForBadDriver", "backSimulatorForBadDriver\backSimulatorForBadDriver.csproj", "{43A3FA59-1C35-4112-ABA3-E2F57E43C812}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{DB274F6C-6B14-45D8-8B9F-CD533B1FC804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB274F6C-6B14-45D8-8B9F-CD533B1FC804}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB274F6C-6B14-45D8-8B9F-CD533B1FC804}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{43A3FA59-1C35-4112-ABA3-E2F57E43C812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43A3FA59-1C35-4112-ABA3-E2F57E43C812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43A3FA59-1C35-4112-ABA3-E2F57E43C812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43A3FA59-1C35-4112-ABA3-E2F57E43C812}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
