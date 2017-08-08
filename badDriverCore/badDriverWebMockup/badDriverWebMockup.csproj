@@ -66,6 +66,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="emailTemplate\postAnswer.html" />
+    <Content Include="emailTemplate\uploadPhotos.html" />
+    <Content Include="emailTemplate\passwordResetLink.html" />
+    <Content Include="emailTemplate\passwordResetNotification.html" />
+    <Content Include="emailTemplate\welcome.html" />
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -152,6 +157,7 @@
       <DependentUpon>Termos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

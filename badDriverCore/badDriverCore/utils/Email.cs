@@ -42,8 +42,6 @@ namespace badDriverCore.utils
 
                     mail.Body = message;
                     mail.Priority = MailPriority.Normal;
-
-
                 }
             }
             catch (Exception)
