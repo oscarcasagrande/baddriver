@@ -71,6 +71,7 @@ namespace badDriverCore.domain
             catch (Exception)
             {
 
+
                 throw;
             }
             finally { }
