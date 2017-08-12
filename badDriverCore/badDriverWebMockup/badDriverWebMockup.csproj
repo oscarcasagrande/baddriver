@@ -66,12 +66,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Component\LoginWebUserControl.ascx" />
     <Content Include="emailTemplate\postAnswer.html" />
     <Content Include="emailTemplate\uploadPhotos.html" />
     <Content Include="emailTemplate\passwordResetLink.html" />
     <Content Include="emailTemplate\passwordResetNotification.html" />
     <Content Include="emailTemplate\welcome.html" />
     <Content Include="packages.config" />
+    <Content Include="Seguranca.aspx" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -98,6 +100,13 @@
     </Compile>
     <Compile Include="Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Component\LoginWebUserControl.ascx.cs">
+      <DependentUpon>LoginWebUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Component\LoginWebUserControl.ascx.designer.cs">
+      <DependentUpon>LoginWebUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -135,6 +144,13 @@
       <DependentUpon>Privacidade.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguranca.aspx.cs">
+      <DependentUpon>Seguranca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguranca.aspx.designer.cs">
+      <DependentUpon>Seguranca.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,7 +173,12 @@
       <DependentUpon>Termos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\badDriverCore\badDriverCore.csproj">
+      <Project>{acdb2d5e-e60d-436e-887a-fbd3b0f3f953}</Project>
+      <Name>badDriverCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

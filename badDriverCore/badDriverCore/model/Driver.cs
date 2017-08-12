@@ -12,7 +12,7 @@ namespace badDriverCore.model
         public string Label { get; set; }
         public string Model { get; set; }
         public string Supplier { get; set; }
-        public string Coloer { get; set; }
+        public string Color { get; set; }
         public List<string> Photos { get; set; }
 
         public Driver() { }
