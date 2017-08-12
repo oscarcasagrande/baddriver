@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,9 +49,24 @@ namespace badDriverCore.domain
         {
             model.User result = new model.User();
 
+            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+
+            parameters.Add(new KeyValuePair<string, string>("@email", email));
+            parameters.Add(new KeyValuePair<string, string>("@username", username));
+            parameters.Add(new KeyValuePair<string, string>("@password", password));
+            IDataReader reader;
             try
             {
-
+                using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procUser_read"))
+                {
+                    if (reader.Read())
+                    {
+                        result.Id = (int)reader["Id"];
+                        result.Email = reader["email"].ToString();
+                        result.Nickname = reader["nickname"].ToString();
+                        result.Active = (bool)reader["active"];
+                    }
+                }
             }
             catch (Exception)
             {
