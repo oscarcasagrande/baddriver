@@ -54,7 +54,7 @@ namespace badDriverCore.domain
             parameters.Add(new KeyValuePair<string, string>("@email", email));
             parameters.Add(new KeyValuePair<string, string>("@username", username));
             parameters.Add(new KeyValuePair<string, string>("@password", password));
-            IDataReader reader;
+            IDataReader reader = null;
             try
             {
                 using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procUser_read"))
@@ -74,7 +74,15 @@ namespace badDriverCore.domain
 
                 throw;
             }
-            finally { }
+            finally
+            {
+
+                if (reader.IsClosed == false)
+                {
+                    reader.Close();
+                    reader.Dispose();
+                }
+            }
 
             return result;
         }
