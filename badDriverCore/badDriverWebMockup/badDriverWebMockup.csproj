@@ -72,6 +72,7 @@
     <Content Include="emailTemplate\passwordResetLink.html" />
     <Content Include="emailTemplate\passwordResetNotification.html" />
     <Content Include="emailTemplate\welcome.html" />
+    <Content Include="FAQ.aspx" />
     <Content Include="packages.config" />
     <Content Include="Seguranca.aspx" />
     <Content Include="Site1.Master" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="Devdream.aspx.designer.cs">
       <DependentUpon>Devdream.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FAQ.aspx.cs">
+      <DependentUpon>FAQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FAQ.aspx.designer.cs">
+      <DependentUpon>FAQ.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

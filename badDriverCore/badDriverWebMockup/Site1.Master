@@ -27,6 +27,7 @@
             <a href="/Login.aspx">Login</a>
             <a href="/Cadastro.aspx">Cadastro</a>
             <a href="/Denunciar.aspx">Denunciar</a>
+            <a href="FAQ.aspx">FAQ</a>
         </div>
     </div>
     <form id="form1" runat="server">
