@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using badDriverCore.model;
 
 namespace badDriverCore.domain
 {
@@ -87,23 +88,59 @@ namespace badDriverCore.domain
             return result;
         }
 
-        public static bool ResetUserPasswordByEmailOrUsername(string email, string ussername)
+        public static bool UpdateUser(model.User user)
         {
             bool result = false;
 
+            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+
+            parameters.Add(new KeyValuePair<string, string>("@id", user.Id.ToString()));
+            parameters.Add(new KeyValuePair<string, string>("@email", user.Email));
+            parameters.Add(new KeyValuePair<string, string>("@username", user.Nickname));
+            parameters.Add(new KeyValuePair<string, string>("@password", user.Password));
+            parameters.Add(new KeyValuePair<string, string>("@active", user.Active.ToString()));
+
             try
             {
-
+                result = utils.DatabaseHelper.ExecuteNonQuery(parameters, "procUser_update");
             }
             catch (Exception)
             {
 
+
                 throw;
             }
-            finally { }
+            finally
+            {
+
+            }
 
             return result;
         }
 
+        public static bool ResetUserPasswordByEmailOrUsername(string email, string ussername)
+        {
+            bool result = false;
+
+            model.User userToUpdate = GetUserByEmailOrUsername(email, ussername);
+
+
+            userToUpdate.Active = false;
+
+            bool userUpdated = UpdateUser(userToUpdate);
+
+            if (userUpdated)
+            {
+
+            }
+
+
+            return result;
+        }
+
+        private static model.User GetUserByEmailOrUsername(string email, string ussername)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
