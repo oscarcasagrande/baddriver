@@ -59,9 +59,11 @@
     <Folder Include="Properties" />
     <Folder Include="tables" />
     <Folder Include="procs" />
+    <Folder Include="querys" />
   </ItemGroup>
   <ItemGroup>
     <None Include="tables\user.sql" />
     <None Include="procs\procUser_create.sql" />
+    <None Include="querys\userCreationTest.sql" />
   </ItemGroup>
 </Project>
