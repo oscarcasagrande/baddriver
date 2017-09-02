@@ -13,7 +13,7 @@ namespace backSimulatorForBadDriver
 
             // E-mail send welcome
 
-            badDriverCore.domain.User.SendWelcomeEmail(new badDriverCore.model.User());
+            //badDriverCore.domain.User.SendWelcomeEmail(new badDriverCore.model.User());
 
             // E-mail send password reset link
 
