@@ -37,14 +37,17 @@ namespace badDriverCore.domain
             List<KeyValuePair<string, string>> toFrom = new List<KeyValuePair<string, string>>();
             toFrom.Add(new KeyValuePair<string, string>("##TitleWelcome", "Bem-vinda ao BadDriver"));
             toFrom.Add(new KeyValuePair<string, string>("##nickname", user.Nickname));
+            toFrom.Add(new KeyValuePair<string, string>("##link", "LINK_TBD"));
 
+            List<string> lines = new List<string>();
+            lines = File.ReadAllLines(templatePath).ToList();
 
-            using (FileStream fs = new FileStream(templatePath, FileMode.Open, FileAccess.Read))
+            foreach (var l in lines)
             {
-
+                templateString += l;
             }
 
-            utils.Email.sendEmail(templateString, user.Email, "Welcome", true, toFrom);
+            utils.Email.sendEmail(user.Email, "Welcome", templateString, true, toFrom);
 
         }
 

@@ -10,19 +10,26 @@ namespace backSimulatorForBadDriver
     {
         static void Main(string[] args)
         {
-
-            // E-mail send welcome
-
-            //badDriverCore.domain.User.SendWelcomeEmail(new badDriverCore.model.User());
-
-            // E-mail send password reset link
-
             int id = 1;
-            string email = "oscar.casagrande@gmail.com";
+            string email = "rafael.redoval@gmail.com";
             string nickname = "bacana";
             string password = "123456";
             string newPassword = "123456new";
             string newNickname = "osquinha";
+
+            // E-mail send welcome
+            badDriverCore.model.User userToReceiveEmail = new badDriverCore.model.User()
+            {
+                Active = true,
+                Email = email,
+                Id = 3,
+                Nickname = nickname,
+                Password = password
+            };
+
+            badDriverCore.domain.User.SendWelcomeEmail(userToReceiveEmail);
+
+            // E-mail send password reset link
 
             // Create user
             badDriverCore.model.User newUser = new badDriverCore.model.User()
