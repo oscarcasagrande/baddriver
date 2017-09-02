@@ -70,7 +70,7 @@ namespace badDriverCore.utils
             return result;
         }
 
-        public static bool sendEmail(string template, string to, string from, string subject, string message, bool isHtmlBody, List<KeyValuePair<string, string>> toFrom)
+        public static bool sendEmail(string to, string subject, string message, bool isHtmlBody, List<KeyValuePair<string, string>> toFrom)
         {
             bool result = false;
             MailMessage mail = null;
@@ -79,7 +79,7 @@ namespace badDriverCore.utils
 
                 using (mail = new MailMessage())
                 {
-                    mail.From = new MailAddress(from);
+
                     mail.To.Add(to);
                     mail.IsBodyHtml = isHtmlBody;
                     mail.Subject = subject;
@@ -93,7 +93,7 @@ namespace badDriverCore.utils
                     mail.Priority = MailPriority.Normal;
 
                     SmtpClient smtpClient = getSmtpClient();
-
+                    mail.From = new MailAddress(getEmailCredentials().UserName);
                     smtpClient.Send(mail);
                 }
             }

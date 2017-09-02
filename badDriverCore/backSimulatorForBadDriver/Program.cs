@@ -10,6 +10,13 @@ namespace backSimulatorForBadDriver
     {
         static void Main(string[] args)
         {
+
+            // E-mail send welcome
+
+            badDriverCore.domain.User.SendWelcomeEmail(new badDriverCore.model.User());
+
+            // E-mail send password reset link
+
             int id = 1;
             string email = "oscar.casagrande@gmail.com";
             string nickname = "bacana";
@@ -49,13 +56,13 @@ namespace backSimulatorForBadDriver
             List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
             values.Add(new KeyValuePair<string, string>("##user", "bacana"));
 
-            badDriverCore.utils.Email.sendEmail(@"C:\Users\oscar.l.casagrande\Source\Repos\baddriver\badDriverCore\badDriverWebMockup\emailTemplate\welcome.html",
-                "oscar.casagrande@gmail.com",
-                "oscar.casagrande@gmail.com",
-                "teste",
-                "teste",
-                true,
-                values);
+            //badDriverCore.utils.Email.sendEmail(@"C:\Users\oscar.l.casagrande\Source\Repos\baddriver\badDriverCore\badDriverWebMockup\emailTemplate\welcome.html",
+            //    "oscar.casagrande@gmail.com",
+            //    "oscar.casagrande@gmail.com",
+            //    "teste",
+            //    "teste",
+            //    true,
+            //    values);
         }
     }
 }

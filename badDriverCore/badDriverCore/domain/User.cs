@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using badDriverCore.model;
+using System.IO;
 
 namespace badDriverCore.domain
 {
@@ -26,6 +27,25 @@ namespace badDriverCore.domain
             finally { }
 
             return result;
+        }
+
+        public static void SendWelcomeEmail(model.User user)
+        {
+            string templatePath = @"C:\Users\oscar.l.casagrande\Source\Repos\baddriver\badDriverCore\badDriverWebMockup\emailTemplate\welcome.html";
+            string templateString = string.Empty;
+
+            List<KeyValuePair<string, string>> toFrom = new List<KeyValuePair<string, string>>();
+            toFrom.Add(new KeyValuePair<string, string>("##TitleWelcome", "Bem-vinda ao BadDriver"));
+            toFrom.Add(new KeyValuePair<string, string>("##nickname", user.Nickname));
+
+
+            using (FileStream fs = new FileStream(templatePath, FileMode.Open, FileAccess.Read))
+            {
+
+            }
+
+            utils.Email.sendEmail(templateString, user.Email, "Welcome", true, toFrom);
+
         }
 
         public static model.User GetUserById(int id)
@@ -131,7 +151,7 @@ namespace badDriverCore.domain
 
             if (userUpdated)
             {
-
+                result = true;
             }
 
 
