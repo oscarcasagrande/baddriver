@@ -67,15 +67,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Component\LoginWebUserControl.ascx" />
+    <Content Include="ControleMessageBox.dll" />
     <Content Include="emailTemplate\postAnswer.html" />
     <Content Include="emailTemplate\uploadPhotos.html" />
     <Content Include="emailTemplate\passwordResetLink.html" />
     <Content Include="emailTemplate\passwordResetNotification.html" />
     <Content Include="emailTemplate\welcome.html" />
     <Content Include="FAQ.aspx" />
+    <None Include="Resetpasswordemail">
+      <BrowseToURL>emailrestpage.</BrowseToURL>
+    </None>
     <Content Include="packages.config" />
     <Content Include="Seguranca.aspx" />
     <Content Include="Site1.Master" />
+    <Content Include="ControleMessageBox.dll.refresh" />
+    <Content Include="Homepage.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -92,6 +98,7 @@
     <Content Include="Privacidade.aspx" />
     <Content Include="Sobre.aspx" />
     <Content Include="Termos.aspx" />
+    <Content Include="Upload.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -180,12 +187,30 @@
     <Compile Include="Termos.aspx.designer.cs">
       <DependentUpon>Termos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\badDriverCore\badDriverCore.csproj">
       <Project>{acdb2d5e-e60d-436e-887a-fbd3b0f3f953}</Project>
       <Name>badDriverCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="MessageBox\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
