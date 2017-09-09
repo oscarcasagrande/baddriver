@@ -16,11 +16,10 @@ namespace badDriverWebMockup
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            string display = "Pop-up!";
-            ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + display + "');", true);
+            
         }
 
-    
-    
+        
+
     }
 }
