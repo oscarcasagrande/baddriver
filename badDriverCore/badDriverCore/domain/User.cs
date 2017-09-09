@@ -80,6 +80,7 @@ namespace badDriverCore.domain
             parameters.Add(new KeyValuePair<string, object>("@nickname", username));
             parameters.Add(new KeyValuePair<string, object>("@password", password));
             IDataReader reader = null;
+
             try
             {
                 using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procUser_read"))
@@ -93,11 +94,9 @@ namespace badDriverCore.domain
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
-                throw;
+                throw ex;
             }
             finally
             {

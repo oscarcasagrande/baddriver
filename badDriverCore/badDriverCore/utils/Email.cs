@@ -11,27 +11,28 @@ namespace badDriverCore.utils
 {
     public static class Email
     {
+        static NetworkCredential _credential;
+
         static NetworkCredential getEmailCredentials()
         {
-            NetworkCredential credential = new NetworkCredential();
-
             AppSettingsReader reader = new AppSettingsReader();
+            _credential = new NetworkCredential();
 
             try
             {
-                credential.UserName = reader.GetValue("username", typeof(string)).ToString();
-                credential.Password = reader.GetValue("password", typeof(string)).ToString();
+                _credential.UserName = reader.GetValue("username", typeof(string)).ToString();
+                _credential.Password = reader.GetValue("password", typeof(string)).ToString();
             }
             catch (Exception ex)
             {
                 Exception x = new Exception();
                 string messageError = string.Empty;
 
-                if (credential.UserName == null)
+                if (_credential.UserName == null)
                 {
                     messageError += "## credential.UserName is null. ";
                 }
-                if (credential.Password == null)
+                if (_credential.Password == null)
                 {
                     messageError += "## credential.Password is null. ";
                 }
@@ -40,7 +41,7 @@ namespace badDriverCore.utils
                 throw ex;
             }
 
-            return credential;
+            return _credential;
         }
 
         static SmtpClient getSmtpClient()
@@ -74,9 +75,9 @@ namespace badDriverCore.utils
         {
             bool result = false;
             MailMessage mail = null;
+
             try
             {
-
                 using (mail = new MailMessage())
                 {
 
@@ -93,8 +94,12 @@ namespace badDriverCore.utils
                     mail.Priority = MailPriority.Normal;
 
                     SmtpClient smtpClient = getSmtpClient();
-                    mail.From = new MailAddress(getEmailCredentials().UserName);
-                    smtpClient.Send(mail);
+                    
+                    if (_credential.UserName.Contains("@") == true)
+                    {
+                        mail.From = new MailAddress(_credential.UserName);
+                        smtpClient.Send(mail);
+                    }
                 }
             }
             catch (Exception ex)

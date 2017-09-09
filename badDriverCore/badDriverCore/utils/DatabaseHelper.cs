@@ -57,11 +57,15 @@ namespace badDriverCore.utils
             {
                 using (command = new SqlCommand(procedure, (SqlConnection)GetDatabaseConnection()))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     foreach (var p in parameters)
                     {
-                        command.Parameters.Add(new SqlParameter(p.Key, p.Value));
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = p.Key;
+                        param.Value = p.Value;
+                        param.SqlDbType = TypeToSqlDbType(p.Value.GetType());
+                        command.Parameters.Add(param);
                     }
-
                     reader = command.ExecuteReader();
                 }
             }
@@ -75,7 +79,6 @@ namespace badDriverCore.utils
             }
             finally
             {
-                reader.Dispose();
                 command.Dispose();
             }
 
@@ -135,6 +138,26 @@ namespace badDriverCore.utils
             finally
             {
                 command.Dispose();
+            }
+
+            return result;
+        }
+
+        private static SqlDbType TypeToSqlDbType(Type t)
+        {
+            String name = t.Name;
+            SqlDbType result = SqlDbType.VarChar; // default value
+            try
+            {
+                if (name.Contains("16") || name.Contains("32") || name.Contains("64"))
+                {
+                    name = name.Substring(0, name.Length - 2);
+                }
+                val = (SqlDbType)Enum.Parse(typeof(SqlDbType), name, true);
+            }
+            catch (Exception)
+            {
+                // add error handling to suit your taste
             }
 
             return result;
