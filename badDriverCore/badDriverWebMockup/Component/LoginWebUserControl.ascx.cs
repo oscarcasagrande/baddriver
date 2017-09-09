@@ -24,6 +24,8 @@ namespace badDriverWebMockup.Component
                     UserEmailTextBox.Text,
                     UserEmailTextBox.Text,
                     PasswordTextBox.Text);
+
+                Response.Write(string.Format("id: {0} , email: {1} , nickname {2}, active {3}", user.Id, user.Email, user.Nickname, user.Active));
             }
             catch (Exception)
             {
