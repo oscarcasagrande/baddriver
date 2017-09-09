@@ -18,12 +18,12 @@
                       <br />
                                           <asp:Label runat="server" id="StatusLabel" text=""  ForeColor="Red" />
                       <br />
-                      <asp:Button ID="btnUpload" runat="server" Text="Carregar Fotos" />                    
+                      <asp:Button ID="btnUpload" OnClientClick="return confirm('Upload Concluido com Sucesso');" runat="server" Text="Carregar Fotos" />                    
                       <br />
                       <br />
                       <br />
                       <br />
-                  </div>
+                      </div>
               </form>
                                                  <br class="clearfix" />
                                  </div>

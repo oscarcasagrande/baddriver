@@ -22,8 +22,6 @@
             <asp:ListItem>placa-fabrica-modelo-cor</asp:ListItem>
         </asp:CheckBoxList>
         <p>
-            &nbsp;</p>
-        <p>
             <asp:Button ID="Button2" runat="server" Text="upload" />
             <asp:TextBox ID="TextBox2" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
         </p>
