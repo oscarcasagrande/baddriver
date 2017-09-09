@@ -86,7 +86,7 @@ namespace badDriverCore.utils
 
                     foreach (var tf in toFrom)
                     {
-                        message.Replace(tf.Key, tf.Value);
+                        message = message.Replace(tf.Key, tf.Value);
                     }
 
                     mail.Body = message;
