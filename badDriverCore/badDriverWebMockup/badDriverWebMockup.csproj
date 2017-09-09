@@ -93,6 +93,7 @@
     <Content Include="Privacidade.aspx" />
     <Content Include="Sobre.aspx" />
     <Content Include="Termos.aspx" />
+    <Content Include="UploadDriver.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -181,12 +182,22 @@
     <Compile Include="Termos.aspx.designer.cs">
       <DependentUpon>Termos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UploadDriver.aspx.cs">
+      <DependentUpon>UploadDriver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadDriver.aspx.designer.cs">
+      <DependentUpon>UploadDriver.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\badDriverCore\badDriverCore.csproj">
       <Project>{acdb2d5e-e60d-436e-887a-fbd3b0f3f953}</Project>
       <Name>badDriverCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DriversPhotos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

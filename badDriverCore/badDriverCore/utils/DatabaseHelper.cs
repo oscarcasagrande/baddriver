@@ -153,7 +153,7 @@ namespace badDriverCore.utils
                 {
                     name = name.Substring(0, name.Length - 2);
                 }
-                val = (SqlDbType)Enum.Parse(typeof(SqlDbType), name, true);
+                result = (SqlDbType)Enum.Parse(typeof(SqlDbType), name, true);
             }
             catch (Exception)
             {

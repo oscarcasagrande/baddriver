@@ -16,14 +16,19 @@ namespace badDriverWebMockup.Component
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-
-            badDriverCore.model.User user =
+            try
+            {
+                badDriverCore.model.User user =
                 badDriverCore.domain.User.GetUserByIOrEmailOrUsernameAndPassword(
                     0,
                     UserEmailTextBox.Text,
                     UserEmailTextBox.Text,
                     PasswordTextBox.Text);
-
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
     }
