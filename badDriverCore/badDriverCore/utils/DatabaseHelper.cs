@@ -7,46 +7,49 @@ using System.Data.Sql;
 using System.Data.Common;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace badDriverCore.utils
 {
 
     public static class DatabaseHelper
     {
-        static string connectionString = "";
+        static AppSettingsReader reader = new AppSettingsReader();
+
+
+        static string connectionString = reader.GetValue("databaseConnectionString", typeof(string)).ToString();
 
         static DbConnection GetDatabaseConnection()
         {
             SqlConnection connection = new SqlConnection();
             try
             {
-                using (connection = new SqlConnection())
+                connection.ConnectionString = connectionString;
+                if (connection.State != ConnectionState.Open)
                 {
-                    connection.ConnectionString = connectionString;
+                    connection.Open();
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-                throw;
+                throw ex;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
             finally
             {
-                if (connection.State != ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    connection.Close();
-                    connection.Dispose();
+                    throw new Exception("Database connection is closed.");
                 }
             }
 
             return connection;
         }
 
-        public static IDataReader ExecuteReader(List<KeyValuePair<string, string>> parameters, string procedure)
+        public static IDataReader ExecuteReader(List<KeyValuePair<string, object>> parameters, string procedure)
         {
             IDataReader reader = null;
             IDbCommand command = null;
@@ -62,13 +65,13 @@ namespace badDriverCore.utils
                     reader = command.ExecuteReader();
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-                throw;
+                throw ex;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {

@@ -70,11 +70,12 @@ namespace badDriverCore.domain
         {
             model.User result = new model.User();
 
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
 
-            parameters.Add(new KeyValuePair<string, string>("@email", email));
-            parameters.Add(new KeyValuePair<string, string>("@username", username));
-            parameters.Add(new KeyValuePair<string, string>("@password", password));
+            parameters.Add(new KeyValuePair<string, object>("@id", id));
+            parameters.Add(new KeyValuePair<string, object>("@email", email));
+            parameters.Add(new KeyValuePair<string, object>("@nickname", username));
+            parameters.Add(new KeyValuePair<string, object>("@password", password));
             IDataReader reader = null;
             try
             {
@@ -116,7 +117,7 @@ namespace badDriverCore.domain
 
             parameters.Add(new KeyValuePair<string, string>("@id", user.Id.ToString()));
             parameters.Add(new KeyValuePair<string, string>("@email", user.Email));
-            parameters.Add(new KeyValuePair<string, string>("@username", user.Nickname));
+            parameters.Add(new KeyValuePair<string, string>("@Nickname", user.Nickname));
             parameters.Add(new KeyValuePair<string, string>("@password", user.Password));
             parameters.Add(new KeyValuePair<string, string>("@active", user.Active.ToString()));
 
@@ -144,8 +145,9 @@ namespace badDriverCore.domain
 
             model.User userToUpdate = GetUserByEmailOrUsername(email, ussername);
 
-
             userToUpdate.Active = false;
+
+            userToUpdate.Password = badDriverCore.utils.Security.NewPassword();
 
             bool userUpdated = UpdateUser(userToUpdate);
 
@@ -153,7 +155,6 @@ namespace badDriverCore.domain
             {
                 result = true;
             }
-
 
             return result;
         }
