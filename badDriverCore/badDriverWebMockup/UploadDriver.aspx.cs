@@ -16,26 +16,39 @@ namespace badDriverWebMockup
 
         protected void UploadButton_Click(object sender, EventArgs e)
         {
-            if ((archivesFileUpload.PostedFile != null) && (archivesFileUpload.PostedFile.ContentLength > 0))
+            string filepath = "C:\\Program Files\\Git\\Github\\Baddriver\\badDriverCore\\badDriverWebMockup\\DriversPhotos";
+            HttpFileCollection uploadedFiles = Request.Files;
+
+            for (int i = 0; i < uploadedFiles.Count; i++)
             {
-                string fn = System.IO.Path.GetFileName(archivesFileUpload.PostedFile.FileName);
-                string SaveLocation = Server.MapPath("DriversPhotos") + "\\" + fn;
+                HttpPostedFile userPostedFile = uploadedFiles[i];
+
                 try
                 {
-                    archivesFileUpload.PostedFile.SaveAs(SaveLocation);
-                    Response.Write("The file has been uploaded.");
+                    if (userPostedFile.ContentLength > 0)
+                    {
+                        Label1.Text += "<u>File #" + (i + 1) +
+                           "</u><br>";
+                        Label1.Text += "File Content Type: " +
+                           userPostedFile.ContentType + "<br>";
+                        Label1.Text += "File Size: " +
+                           userPostedFile.ContentLength + "kb<br>";
+                        Label1.Text += "File Name: " +
+                           userPostedFile.FileName + "<br>";
+
+                        userPostedFile.SaveAs(filepath + "\\" +
+                           System.IO.Path.GetFileName(userPostedFile.FileName));
+
+                        Label1.Text += "Location where saved: " +
+                           filepath + "\\" +
+                           System.IO.Path.GetFileName(userPostedFile.FileName) +
+                           "<p>";
+                    }
                 }
-                catch (Exception ex)
+                catch (Exception Ex)
                 {
-                    Response.Write("Error: " + ex.Message);
-                    //Note: Exception.Message returns a detailed message that describes the current exception. 
-                    //For security reasons, we do not recommend that you return Exception.Message to end users in 
-                    //production environments. It would be better to put a generic error message. 
+                    Label1.Text += "Error: <br>" + Ex.Message;
                 }
-            }
-            else
-            {
-                Response.Write("Please select a file to upload.");
             }
         }
     }
