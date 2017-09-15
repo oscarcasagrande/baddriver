@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:fileupload runat="server" id="archivesFileUpload"></asp:fileupload>
+    <asp:fileupload runat="server" id="archivesFileUpload" AllowMultiple="True"></asp:fileupload>
     <br />
     <asp:button runat="server" text="Button" id="UploadButton" OnClick="UploadButton_Click" />
 </asp:Content>
