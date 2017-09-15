@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace badDriverWebMockup
 {
@@ -16,26 +17,19 @@ namespace badDriverWebMockup
 
         protected void UploadButton_Click(object sender, EventArgs e)
         {
-            if ((archivesFileUpload.PostedFile != null) && (archivesFileUpload.PostedFile.ContentLength > 0))
             {
-                string fn = System.IO.Path.GetFileName(archivesFileUpload.PostedFile.FileName);
-                string SaveLocation = Server.MapPath("DriversPhotos") + "\\" + fn;
-                try
+
+                HttpFileCollection fileCollection = Request.Files;
+                for (int i = 0; i < fileCollection.Count; i++)
                 {
-                    archivesFileUpload.PostedFile.SaveAs(SaveLocation);
-                    Response.Write("The file has been uploaded.");
+                    HttpPostedFile uploadfile = fileCollection[i];
+                    string fileName = Path.GetFileName(uploadfile.FileName);
+                    if (uploadfile.ContentLength > 0)
+                    {
+                        uploadfile.SaveAs(Server.MapPath("DriverPhotos") + fileName);
+                        lblUploadStatus.Text += fileName + "Saved Successfully<br>";
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Response.Write("Error: " + ex.Message);
-                    //Note: Exception.Message returns a detailed message that describes the current exception. 
-                    //For security reasons, we do not recommend that you return Exception.Message to end users in 
-                    //production environments. It would be better to put a generic error message. 
-                }
-            }
-            else
-            {
-                Response.Write("Please select a file to upload.");
             }
         }
     }
