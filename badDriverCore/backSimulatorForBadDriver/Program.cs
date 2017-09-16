@@ -42,6 +42,8 @@ namespace backSimulatorForBadDriver
             badDriverCore.domain.User.SendWelcomeEmail(userToReceiveEmail);
 
             // E-mail send password reset link
+            Console.WriteLine(string.Format("User updated = {0}", badDriverCore.domain.User.ResetUserPasswordByEmailOrUsername(email, nickname)));
+
 
             // Create user
             badDriverCore.model.User newUser = new badDriverCore.model.User()
