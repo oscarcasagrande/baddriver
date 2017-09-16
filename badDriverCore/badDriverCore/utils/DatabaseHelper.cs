@@ -85,21 +85,38 @@ namespace badDriverCore.utils
             return reader;
         }
 
-        public static bool ExecuteNonQuery(List<KeyValuePair<string, string>> parameters, string procedure)
+        public static object ExecuteNonQuery(List<KeyValuePair<string, object>> parameters, string procedure, Nullable<KeyValuePair<string, object>> outputParameter)
         {
             IDbCommand command = null;
-            bool result = false;
+            object result = null;
 
             try
             {
+
                 using (command = new SqlCommand(procedure, (SqlConnection)GetDatabaseConnection()))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     foreach (var p in parameters)
                     {
-                        command.Parameters.Add(new SqlParameter(p.Key, p.Value));
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = p.Key;
+                        param.Value = p.Value;
+                        param.SqlDbType = TypeToSqlDbType(p.Value.GetType());
+                        command.Parameters.Add(param);
                     }
 
-                    command.ExecuteNonQuery();
+                    if (outputParameter.HasValue)
+                    {
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = outputParameter.Value.Key;
+                        param.Value = outputParameter.Value.Value;
+                        param.SqlDbType = TypeToSqlDbType(outputParameter.Value.Value.GetType());
+                        param.Direction = ParameterDirection.Output;
+                        command.Parameters.Add(param);
+                    }
+
+                    result = command.ExecuteNonQuery();
+
                 }
             }
             catch (Exception)
@@ -114,18 +131,34 @@ namespace badDriverCore.utils
             return result;
         }
 
-        public static object ExecuteScalar(List<KeyValuePair<string, string>> parameters, string procedure)
+        public static object ExecuteScalar(List<KeyValuePair<string, object>> parameters, string procedure, Nullable<KeyValuePair<string, object>> outputParameter)
         {
             IDbCommand command = null;
             object result = null;
 
             try
             {
+
                 using (command = new SqlCommand(procedure, (SqlConnection)GetDatabaseConnection()))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     foreach (var p in parameters)
                     {
-                        command.Parameters.Add(new SqlParameter(p.Key, p.Value));
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = p.Key;
+                        param.Value = p.Value;
+                        param.SqlDbType = TypeToSqlDbType(p.Value.GetType());
+                        command.Parameters.Add(param);
+                    }
+
+                    if (outputParameter.HasValue)
+                    {
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = outputParameter.Value.Key;
+                        param.Value = outputParameter.Value.Value;
+                        param.SqlDbType = TypeToSqlDbType(outputParameter.Value.Value.GetType());
+                        param.Direction = ParameterDirection.Output;
+                        command.Parameters.Add(param);
                     }
 
                     result = command.ExecuteScalar();
