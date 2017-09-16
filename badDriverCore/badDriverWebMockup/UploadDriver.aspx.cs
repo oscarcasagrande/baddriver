@@ -16,6 +16,10 @@ namespace badDriverWebMockup
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!this.Page.User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
 
         }
 
@@ -48,9 +52,9 @@ namespace badDriverWebMockup
                                             string nome = System.IO.Path.GetFileName(hpf.FileName);
                                             //Pega a extensão do arquivo
                                             string extensao = Path.GetExtension(hpf.FileName);
-                                            
+
                                             //Caminho a onde será salvo
-                                            hpf.SaveAs(Server.MapPath("~/DriversPhotos/")  + i + extensao);
+                                            hpf.SaveAs(Server.MapPath("~/DriversPhotos/") + i + extensao);
 
                                         }
 
