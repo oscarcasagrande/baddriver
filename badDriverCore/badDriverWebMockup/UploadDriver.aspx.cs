@@ -33,7 +33,6 @@ namespace badDriverWebMockup
                             //Aqui ele vai filtrar pelo tipo de arquivo
                             if (archivesFileUpload.PostedFile.ContentType == "image/jpeg" ||
                                 archivesFileUpload.PostedFile.ContentType == "image/png" ||
-                                archivesFileUpload.PostedFile.ContentType == "image/gif" ||
                                 archivesFileUpload.PostedFile.ContentType == "image/bmp")
                             {
                                 try
