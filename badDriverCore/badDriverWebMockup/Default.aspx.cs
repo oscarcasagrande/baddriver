@@ -11,12 +11,11 @@ namespace badDriverWebMockup
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void uploadButton_Click(object sender, EventArgs e)
-        {
-
+            if (this.Page.User.Identity.IsAuthenticated == false)
+            {
+                UploadDriverLink.Enabled = false;
+                UploadDriverLink.Visible = false;
+            }
         }
     }
 }
