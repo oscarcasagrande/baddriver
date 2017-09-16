@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Component\LoginWebUserControl.ascx" />
+    <Content Include="ConfirmacaoCadastro.aspx" />
     <Content Include="emailTemplate\postAnswer.html" />
     <Content Include="emailTemplate\uploadPhotos.html" />
     <Content Include="emailTemplate\passwordResetLink.html" />
@@ -110,6 +111,13 @@
     </Compile>
     <Compile Include="Component\LoginWebUserControl.ascx.designer.cs">
       <DependentUpon>LoginWebUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmacaoCadastro.aspx.cs">
+      <DependentUpon>ConfirmacaoCadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmacaoCadastro.aspx.designer.cs">
+      <DependentUpon>ConfirmacaoCadastro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
