@@ -69,6 +69,7 @@
     <None Include="procs\procUserId_read.sql" />
     <None Include="procs\procUserEmail_read.sql" />
     <None Include="procs\procUserNickname_read.sql" />
+    <None Include="querys\initialData-User.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="procs\procUser_update.sql" />
