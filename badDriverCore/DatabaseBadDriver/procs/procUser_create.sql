@@ -1,6 +1,10 @@
-﻿
+﻿Use BadDriver
+Go
+If exists(select 1 from sys.objects where type = 'P' and object_id = OBJECT_ID (N'[dbo].[procUser_create]'))
+DROP PROC [dbo].[procUser_create]
+GO
 
-ALTER PROCEDURE [dbo].[procUser_create]
+CREATE PROCEDURE [dbo].[procUser_create]
 	@email		varchar(350)	,
 	@password	varchar(150)	,
 	@nickname	varchar(150)	,
@@ -23,5 +27,7 @@ begin
 			values
 				(@Email, @Password, @Nickname, 1);
 			set @id = @@IDENTITY;
+			select @id =  Id From [dbo].[User] where email = @email
 		end
 end
+GO

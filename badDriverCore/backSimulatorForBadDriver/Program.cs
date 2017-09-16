@@ -17,6 +17,18 @@ namespace backSimulatorForBadDriver
             string newPassword = "123456new";
             string newNickname = "osquinha";
 
+            // Create user
+            badDriverCore.model.User userToBeCreated = new badDriverCore.model.User()
+            {
+                Active = false,
+                Email = email.Replace("teste", Guid.NewGuid().ToString()),
+                Id = 0,
+                Nickname = Guid.NewGuid().ToString(),
+                Password = password
+            };
+
+            userToBeCreated = badDriverCore.domain.User.CreateUser(userToBeCreated);
+
             // E-mail send welcome
             badDriverCore.model.User userToReceiveEmail = new badDriverCore.model.User()
             {
