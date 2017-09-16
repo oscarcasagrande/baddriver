@@ -55,16 +55,38 @@ namespace badDriverCore.domain
         {
             model.User result = new model.User();
 
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+            parameters.Add(new KeyValuePair<string, object>("@id", id));
+
+            IDataReader reader = null;
+
             try
             {
-
+                using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procUserId_read"))
+                {
+                    if (reader.Read())
+                    {
+                        result.Id = (int)reader["Id"];
+                        result.Email = reader["email"].ToString();
+                        result.Nickname = reader["nickname"].ToString();
+                        result.Active = (bool)reader["active"];
+                    }
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
             {
 
-                throw;
+                if (reader.IsClosed == false)
+                {
+                    reader.Close();
+                    reader.Dispose();
+                }
             }
-            finally { }
 
             return result;
         }
@@ -141,11 +163,11 @@ namespace badDriverCore.domain
             return result;
         }
 
-        public static bool ResetUserPasswordByEmailOrUsername(string email, string ussername)
+        public static bool ResetUserPasswordByEmailOrUsername(string email, string username)
         {
             bool result = false;
 
-            model.User userToUpdate = GetUserByEmailOrUsername(email, ussername);
+            model.User userToUpdate = GetUserByEmailOrUsername(email, username);
 
             userToUpdate.Active = false;
 
@@ -161,9 +183,100 @@ namespace badDriverCore.domain
             return result;
         }
 
-        private static model.User GetUserByEmailOrUsername(string email, string ussername)
+        private static model.User GetUserByEmailOrUsername(string email, string username)
         {
-            throw new NotImplementedException();
+            model.User result = new model.User();
+
+            if (email.Length > 0)
+            {
+                result = GetUserByEmail(email);
+            }
+            else if (username.Length > 0)
+            {
+                result = GetUserByUsername(username);
+            }
+
+            return result;
+        }
+
+        private static model.User GetUserByUsername(string username)
+        {
+            model.User result = new model.User();
+
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+            
+            parameters.Add(new KeyValuePair<string, object>("@nickname", username));
+            
+            IDataReader reader = null;
+
+            try
+            {
+                using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procUserNickname_read"))
+                {
+                    if (reader.Read())
+                    {
+                        result.Id = (int)reader["Id"];
+                        result.Email = reader["email"].ToString();
+                        result.Nickname = reader["nickname"].ToString();
+                        result.Active = (bool)reader["active"];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+                if (reader.IsClosed == false)
+                {
+                    reader.Close();
+                    reader.Dispose();
+                }
+            }
+
+            return result;
+        }
+
+        private static model.User GetUserByEmail(string email)
+        {
+            model.User result = new model.User();
+
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+            parameters.Add(new KeyValuePair<string, object>("@email", email));
+
+            IDataReader reader = null;
+
+            try
+            {
+                using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procUserEmail_read"))
+                {
+                    if (reader.Read())
+                    {
+                        result.Id = (int)reader["Id"];
+                        result.Email = reader["email"].ToString();
+                        result.Nickname = reader["nickname"].ToString();
+                        result.Active = (bool)reader["active"];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+                if (reader.IsClosed == false)
+                {
+                    reader.Close();
+                    reader.Dispose();
+                }
+            }
+
+            return result;
         }
     }
 }
