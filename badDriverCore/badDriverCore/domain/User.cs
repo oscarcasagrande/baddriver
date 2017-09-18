@@ -96,7 +96,6 @@ namespace badDriverCore.domain
             }
             finally
             {
-
                 if (reader.IsClosed == false)
                 {
                     reader.Close();

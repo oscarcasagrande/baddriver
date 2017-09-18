@@ -29,19 +29,21 @@ namespace backSimulatorForBadDriver
         private static void testDriverFeatures()
         {
             // Create Driver
-            badDriverCore.model.Driver driverToBeCreated = new badDriverCore.model.Driver()
-            {
-                Color = "Black",
-                Label = "FOH5678",
-                Model = "Sentra",
-                Supplier = "Nissan"
-            };
+            //badDriverCore.model.Driver driverToBeCreated = new badDriverCore.model.Driver()
+            //{
+            //    Color = "Black",
+            //    Label = "FOH5678",
+            //    Model = "Sentra",
+            //    Supplier = "Nissan"
+            //};
 
-            driverToBeCreated = badDriverCore.domain.Driver.CreateDriver(driverToBeCreated);
+            //driverToBeCreated = badDriverCore.domain.Driver.CreateDriver(driverToBeCreated);
+
+            // Get Driver
+            badDriverCore.model.Driver driverToBeGetted = badDriverCore.domain.Driver.GetDriverById(1);
 
             // Update Driver
 
-            // Get Driver
 
             // List Driver
 
