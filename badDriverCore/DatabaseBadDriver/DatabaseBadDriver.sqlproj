@@ -66,6 +66,9 @@
     <None Include="procs\procUser_create.sql" />
     <None Include="querys\userCreationTest.sql" />
     <None Include="procs\procUser_Read.sql" />
+    <None Include="procs\procUserId_read.sql" />
+    <None Include="procs\procUserEmail_read.sql" />
+    <None Include="procs\procUserNickname_read.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="procs\procUser_update.sql" />

@@ -31,12 +31,12 @@ namespace badDriverWebMockup {
         protected global::System.Web.UI.WebControls.Button UploadButton;
         
         /// <summary>
-        /// Controle Label1.
+        /// Controle lblUploadStatus.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblUploadStatus;
     }
 }
