@@ -8,15 +8,54 @@ namespace backSimulatorForBadDriver
 {
     class Program
     {
+        static int id = 1;
+        static string email = "teste3@teste.com.br";
+        static string nickname = "bacana";
+        static string password = "123456";
+        static string newPassword = "123456new";
+        static string newNickname = "osquinha";
+
         static void Main(string[] args)
         {
-            int id = 1;
-            string email = "teste3@teste.com.br";
-            string nickname = "bacana";
-            string password = "123456";
-            string newPassword = "123456new";
-            string newNickname = "osquinha";
 
+            //testUserFeatures();
+
+            testDriverFeatures();
+
+
+
+        }
+
+        private static void testDriverFeatures()
+        {
+            // Create Driver
+            badDriverCore.model.Driver driverToBeCreated = new badDriverCore.model.Driver()
+            {
+                Color = "Black",
+                Label = "FOH5678",
+                Model = "Sentra",
+                Supplier = "Nissan"
+            };
+
+            driverToBeCreated = badDriverCore.domain.Driver.CreateDriver(driverToBeCreated);
+
+            // Update Driver
+
+            // Get Driver
+
+            // List Driver
+
+            // Active Driver
+
+            // List Driver Photos
+
+            // Add Driver Photos
+
+            // Delete Driver Photos
+        }
+
+        private static void testUserFeatures()
+        {
             // Create user
             badDriverCore.model.User userToBeCreated = new badDriverCore.model.User()
             {

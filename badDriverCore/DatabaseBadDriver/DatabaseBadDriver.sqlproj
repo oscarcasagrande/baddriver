@@ -62,15 +62,17 @@
     <Folder Include="querys" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="tables\user.sql" />
-    <None Include="procs\procUser_create.sql" />
+    <None Include="tables\01 - user.sql" />
+    <None Include="procs\01 - procUser_create.sql" />
     <None Include="querys\userCreationTest.sql" />
-    <None Include="procs\procUser_Read.sql" />
-    <None Include="procs\procUserId_read.sql" />
-    <None Include="procs\procUserEmail_read.sql" />
-    <None Include="procs\procUserNickname_read.sql" />
+    <None Include="procs\02 - procUser_Read.sql" />
+    <None Include="procs\05 - procUserId_read.sql" />
+    <None Include="procs\04 - procUserEmail_read.sql" />
+    <None Include="procs\06 - procUserNickname_read.sql" />
+    <None Include="tables\02 - driver.sql" />
+    <None Include="procs\07 - procDriver_Create.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="procs\procUser_update.sql" />
+    <Build Include="procs\03 - procUser_update.sql" />
   </ItemGroup>
 </Project>
