@@ -71,6 +71,8 @@
     <None Include="procs\06 - procUserNickname_read.sql" />
     <None Include="tables\02 - driver.sql" />
     <None Include="procs\07 - procDriver_Create.sql" />
+    <None Include="procs\08 - procDriverId_read.sql" />
+    <None Include="procs\09 - procUserId_read.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="procs\03 - procUser_update.sql" />

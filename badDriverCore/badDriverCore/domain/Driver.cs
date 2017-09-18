@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using badDriverCore.model;
+using System.Data;
 
 namespace badDriverCore.domain
 {
@@ -13,16 +14,38 @@ namespace badDriverCore.domain
         {
             model.Driver result = new model.Driver();
 
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+            parameters.Add(new KeyValuePair<string, object>("@id", id));
+
+            IDataReader reader = null;
+
             try
             {
-
+                using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procDriverId_read"))
+                {
+                    if (reader.Read())
+                    {
+                        result.Id = (int)reader["Id"];
+                        result.Color = reader["color"].ToString();
+                        result.Label = reader["label"].ToString();
+                        result.Model = reader["model"].ToString();
+                        result.Supplier = reader["supplier"].ToString();
+                    }
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
-            finally { }
+            finally
+            {
+                if (reader.IsClosed == false)
+                {
+                    reader.Close();
+                    reader.Dispose();
+                }
+            }
 
             return result;
         }
