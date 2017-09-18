@@ -21,7 +21,6 @@ namespace badDriverCore.domain
             parameters.Add(new KeyValuePair<string, object>("@nickname", user.Nickname));
             parameters.Add(new KeyValuePair<string, object>("@password", user.Password));
 
-            result = user;
 
             try
             {
@@ -31,7 +30,9 @@ namespace badDriverCore.domain
                     "procUser_Create",
                     new KeyValuePair<string, object>("@Id", user.Id));
 
-                result.Active = true;
+                user.Active = true;
+
+                result = user;
 
             }
             catch (Exception ex)
