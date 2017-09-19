@@ -24,8 +24,6 @@ namespace backSimulatorForBadDriver
 
             testDriverFeatures();
 
-
-
         }
 
         private static void testDriverFeatures()
@@ -63,6 +61,7 @@ namespace backSimulatorForBadDriver
             drivers = domain.Driver.ListDrivers();
 
             // Active Driver
+
 
             // List Driver Photos
 
