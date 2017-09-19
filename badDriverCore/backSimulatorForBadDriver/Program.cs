@@ -57,6 +57,8 @@ namespace backSimulatorForBadDriver
             Console.WriteLine("Driver new color: {0}", driverToBeUpdated.Color);
 
             // List Driver
+            List<badDriverCore.model.Driver> drivers = new List<badDriverCore.model.Driver>();
+            drivers = badDriverCore.domain.Driver.ListDrivers();
 
             // Active Driver
 

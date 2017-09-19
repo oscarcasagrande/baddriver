@@ -83,6 +83,13 @@ namespace badDriverCore.domain
             return result;
         }
 
+        public static List<model.Driver> ListDrivers()
+        {
+            List<model.Driver> result = new List<model.Driver>();
+
+            return result;
+        }
+
         public static bool UpdateDriver(model.Driver driverToBeUpdated)
         {
             bool result = false;
