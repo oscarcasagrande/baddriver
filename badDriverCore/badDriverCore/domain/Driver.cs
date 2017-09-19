@@ -53,6 +53,65 @@ namespace badDriverCore.domain
         public static model.Driver CreateDriver(model.Driver driver)
         {
             model.Driver result = new model.Driver();
+            result = GetDriver(driver);
+
+            if (result.Id == 0)
+            {
+                List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+                parameters.Add(new KeyValuePair<string, object>("@Color", driver.Color));
+                parameters.Add(new KeyValuePair<string, object>("@Label", driver.Label));
+                parameters.Add(new KeyValuePair<string, object>("@Model", driver.Model));
+                parameters.Add(new KeyValuePair<string, object>("@Supplier", driver.Supplier));
+
+                try
+                {
+                    result.Id = (Int32)utils.DatabaseHelper.ExecuteNonQuery(
+                        parameters,
+                        "procDriver_Create",
+                        new KeyValuePair<string, object>("@Id", driver.Id));
+                    driver.Id = result.Id;
+
+                    result = driver;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        public static bool UpdateDriver(model.Driver driverToBeUpdated)
+        {
+            bool result = false;
+
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+            parameters.Add(new KeyValuePair<string, object>("@Id", driverToBeUpdated.Id));
+            parameters.Add(new KeyValuePair<string, object>("@Color", driverToBeUpdated.Color));
+            parameters.Add(new KeyValuePair<string, object>("@Label", driverToBeUpdated.Label));
+            parameters.Add(new KeyValuePair<string, object>("@Model", driverToBeUpdated.Model));
+            parameters.Add(new KeyValuePair<string, object>("@Supplier", driverToBeUpdated.Supplier));
+
+            try
+            {
+                utils.DatabaseHelper.ExecuteNonQuery(parameters, "procDriver_Update", null);
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { }
+
+            return result;
+        }
+
+        private static model.Driver GetDriver(model.Driver driver)
+        {
+            model.Driver result = new model.Driver();
 
             List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
 
@@ -61,19 +120,33 @@ namespace badDriverCore.domain
             parameters.Add(new KeyValuePair<string, object>("@Model", driver.Model));
             parameters.Add(new KeyValuePair<string, object>("@Supplier", driver.Supplier));
 
+            IDataReader reader = null;
+
             try
             {
-                result.Id = (Int32)utils.DatabaseHelper.ExecuteNonQuery(
-                    parameters,
-                    "procDriver_Create",
-                    new KeyValuePair<string, object>("@Id", driver.Id));
-                driver.Id = result.Id;
-
-                result = driver;
+                using (reader = utils.DatabaseHelper.ExecuteReader(parameters, "procDriver_Read"))
+                {
+                    if (reader.Read())
+                    {
+                        result.Id = (int)reader["Id"];
+                        result.Color = reader["Color"].ToString();
+                        result.Label = reader["Label"].ToString();
+                        result.Model = reader["Model"].ToString();
+                        result.Supplier = reader["Supplier"].ToString();
+                    }
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                if (reader.IsClosed == false)
+                {
+                    reader.Close();
+                    reader.Dispose();
+                }
             }
 
             return result;

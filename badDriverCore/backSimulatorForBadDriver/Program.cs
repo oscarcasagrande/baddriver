@@ -29,21 +29,32 @@ namespace backSimulatorForBadDriver
         private static void testDriverFeatures()
         {
             // Create Driver
-            //badDriverCore.model.Driver driverToBeCreated = new badDriverCore.model.Driver()
-            //{
-            //    Color = "Black",
-            //    Label = "FOH5678",
-            //    Model = "Sentra",
-            //    Supplier = "Nissan"
-            //};
+            badDriverCore.model.Driver driverToBeCreated = new badDriverCore.model.Driver()
+            {
+                Color = "Black",
+                Label = "FOH5698",
+                Model = "Sentra",
+                Supplier = "Nissan"
+            };
 
-            //driverToBeCreated = badDriverCore.domain.Driver.CreateDriver(driverToBeCreated);
+            driverToBeCreated = badDriverCore.domain.Driver.CreateDriver(driverToBeCreated);
 
             // Get Driver
-            badDriverCore.model.Driver driverToBeGetted = badDriverCore.domain.Driver.GetDriverById(1);
+            badDriverCore.model.Driver driverToBeGot = badDriverCore.domain.Driver.GetDriverById(1);
 
             // Update Driver
+            badDriverCore.model.Driver driverToBeUpdated = driverToBeGot;
+            bool driverUpdated = false;
+            Console.WriteLine("Driver Getted / To Be Updated Color [BEFORE CHANGE COLOR]: {0}", driverToBeUpdated.Color);
+            driverToBeUpdated.Color = (driverToBeGot.Color == "Black") ? "White" : "Black";
 
+            Console.WriteLine("Driver Getted / To Be Updated Color [AFTER CHANGE COLOR]: {0}", driverToBeUpdated.Color);
+            driverUpdated = badDriverCore.domain.Driver.UpdateDriver(driverToBeUpdated);
+
+            Console.WriteLine("Driver Updated: {0}", driverUpdated);
+
+            driverToBeUpdated = badDriverCore.domain.Driver.GetDriverById(driverToBeUpdated.Id);
+            Console.WriteLine("Driver new color: {0}", driverToBeUpdated.Color);
 
             // List Driver
 
@@ -54,6 +65,8 @@ namespace backSimulatorForBadDriver
             // Add Driver Photos
 
             // Delete Driver Photos
+
+            Console.ReadKey();
         }
 
         private static void testUserFeatures()
