@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using badDriverCore.model;
-using System.Data;
+using model = badDriverModel;
+using utils = badDriverUtils;
 
-namespace badDriverCore.domain
+namespace badDriverDomain
 {
     public static class Driver
     {
