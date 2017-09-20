@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using model = badDriverModel;
-using domain = badDriverDomain;
+using service = badDriverService;
 
 namespace backSimulatorForBadDriver
 {
@@ -37,10 +37,10 @@ namespace backSimulatorForBadDriver
                 Supplier = "Nissan"
             };
 
-            driverToBeCreated = domain.Driver.CreateDriver(driverToBeCreated);
+            driverToBeCreated = service.Driver.CreateDriver(driverToBeCreated);
 
             // Get Driver
-            model.Driver driverToBeGot = domain.Driver.GetDriverById(1);
+            model.Driver driverToBeGot = service.Driver.GetDriverById(1);
 
             // Update Driver
             model.Driver driverToBeUpdated = driverToBeGot;
@@ -49,19 +49,16 @@ namespace backSimulatorForBadDriver
             driverToBeUpdated.Color = (driverToBeGot.Color == "Black") ? "White" : "Black";
 
             Console.WriteLine("Driver Getted / To Be Updated Color [AFTER CHANGE COLOR]: {0}", driverToBeUpdated.Color);
-            driverUpdated = domain.Driver.UpdateDriver(driverToBeUpdated);
+            driverUpdated = service.Driver.UpdateDriver(driverToBeUpdated);
 
             Console.WriteLine("Driver Updated: {0}", driverUpdated);
 
-            driverToBeUpdated = domain.Driver.GetDriverById(driverToBeUpdated.Id);
+            driverToBeUpdated = service.Driver.GetDriverById(driverToBeUpdated.Id);
             Console.WriteLine("Driver new color: {0}", driverToBeUpdated.Color);
 
             // List Driver
             List<model.Driver> drivers = new List<model.Driver>();
-            drivers = domain.Driver.ListDrivers();
-
-            // Active Driver
-
+            drivers = service.Driver.ListDrivers();
 
             // List Driver Photos
 
@@ -84,7 +81,7 @@ namespace backSimulatorForBadDriver
                 Password = password
             };
 
-            userToBeCreated = domain.User.CreateUser(userToBeCreated);
+            userToBeCreated = service.User.CreateUser(userToBeCreated);
 
             // E-mail send welcome
             model.User userToReceiveEmail = new model.User()
@@ -96,10 +93,10 @@ namespace backSimulatorForBadDriver
                 Password = password
             };
 
-            domain.User.SendWelcomeEmail(userToReceiveEmail);
+            service.User.SendWelcomeEmail(userToReceiveEmail);
 
             // E-mail send password reset link
-            Console.WriteLine(string.Format("User updated = {0}", domain.User.ResetUserPasswordByEmailOrUsername(email, nickname)));
+            Console.WriteLine(string.Format("User updated = {0}", service.User.ResetUserPasswordByEmailOrUsername(email, nickname)));
 
 
             // Create user
@@ -111,24 +108,24 @@ namespace backSimulatorForBadDriver
                 Nickname = nickname,
                 Password = password
             };
-            newUser = domain.User.CreateUser(newUser);
+            newUser = service.User.CreateUser(newUser);
 
 
             // Get User
-            model.User gettedUserById = domain.User.GetUserById(id);
-            model.User gettedUserByEmail = domain.User.GetUserByIOrEmailOrUsernameAndPassword(4, "teste3@teste.com.br", string.Empty, "123456");
-            model.User gettedUserByNickname = domain.User.GetUserByIOrEmailOrUsernameAndPassword(0, string.Empty, nickname, password);
+            model.User gettedUserById = service.User.GetUserById(id);
+            model.User gettedUserByEmail = service.User.GetUserByIOrEmailOrUsernameAndPassword(4, "teste3@teste.com.br", string.Empty, "123456");
+            model.User gettedUserByNickname = service.User.GetUserByIOrEmailOrUsernameAndPassword(0, string.Empty, nickname, password);
 
 
             // User reset password
-            bool resetUserPasswordByEmail = domain.User.ResetUserPasswordByEmailOrUsername(email, string.Empty);
-            bool resetUserPasswordByNickname = domain.User.ResetUserPasswordByEmailOrUsername(string.Empty, nickname);
+            bool resetUserPasswordByEmail = service.User.ResetUserPasswordByEmailOrUsername(email, string.Empty);
+            bool resetUserPasswordByNickname = service.User.ResetUserPasswordByEmailOrUsername(string.Empty, nickname);
 
             // Update User
-            model.User userToUpdate = domain.User.GetUserById(1);
+            model.User userToUpdate = service.User.GetUserById(1);
             userToUpdate.Nickname = newNickname;
 
-            bool userUpdated = domain.User.UpdateUser(userToUpdate);
+            bool userUpdated = service.User.UpdateUser(userToUpdate);
 
 
             List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();

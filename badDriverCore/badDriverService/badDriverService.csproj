@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{43A3FA59-1C35-4112-ABA3-E2F57E43C812}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{16A5EB80-5B23-4FA6-B383-04046C0C2FDF}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>backSimulatorForBadDriver</RootNamespace>
-    <AssemblyName>backSimulatorForBadDriver</AssemblyName>
+    <RootNamespace>badDriverService</RootNamespace>
+    <AssemblyName>badDriverService</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -45,13 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Driver.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web References\Baddriver.APIv1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -59,28 +57,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Baddriver.APIv1\APIv1.wsdl" />
-    <None Include="Web References\Baddriver.APIv1\Driver.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\Baddriver.APIv1\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\badDriverDomain\badDriverDomain.csproj">
+      <Project>{123ee9d6-580c-4ade-99b7-aa6ee5cba089}</Project>
+      <Name>badDriverDomain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\badDriverModel\badDriverModel.csproj">
       <Project>{428329b6-e462-49e8-86d6-897cca57f71e}</Project>
       <Name>badDriverModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\badDriverService\badDriverService.csproj">
-      <Project>{16a5eb80-5b23-4fa6-b383-04046c0c2fdf}</Project>
-      <Name>badDriverService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -99,8 +82,23 @@
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>backSimulatorForBadDriver_Baddriver_APIv1_APIv1</CachedSettingsPropName>
+      <CachedSettingsPropName>badDriverService_Baddriver_APIv1_APIv1</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Baddriver.APIv1\APIv1.wsdl" />
+    <None Include="Web References\Baddriver.APIv1\Driver.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Baddriver.APIv1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Baddriver.APIv1\APIv1.disco" />
