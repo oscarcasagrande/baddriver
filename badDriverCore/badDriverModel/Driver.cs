@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace badDriverModel
 {
+    [Serializable]
     public class Driver
     {
         public int Id { get; set; }

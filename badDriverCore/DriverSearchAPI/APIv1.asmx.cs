@@ -22,7 +22,14 @@ namespace DriverSearchAPI
         {
             List<badDriverModel.Driver> result = new List<badDriverModel.Driver>();
 
-
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             return result;
         }
