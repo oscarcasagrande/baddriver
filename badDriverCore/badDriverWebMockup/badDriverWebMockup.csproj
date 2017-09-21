@@ -69,6 +69,15 @@
   <ItemGroup>
     <Content Include="Component\LoginWebUserControl.ascx" />
     <Content Include="ConfirmacaoCadastro.aspx" />
+    <Content Include="Contents\carousel.css" />
+    <Content Include="Contents\css\assets\ie10-viewport-bug-workaround.css" />
+    <Content Include="Contents\css\bootstrap-theme.css" />
+    <Content Include="Contents\css\bootstrap-theme.min.css" />
+    <Content Include="Contents\css\bootstrap.css" />
+    <Content Include="Contents\css\bootstrap.min.css" />
+    <Content Include="Contents\css\carousel.css" />
+    <Content Include="Contents\css\cover.css" />
+    <Content Include="Contents\css\footer.css" />
     <Content Include="emailTemplate\postAnswer.html" />
     <Content Include="emailTemplate\uploadPhotos.html" />
     <Content Include="emailTemplate\passwordResetLink.html" />
@@ -76,8 +85,30 @@
     <Content Include="emailTemplate\welcome.html" />
     <Content Include="packages.config" />
     <Content Include="Redefinirsenha.aspx" />
+    <Content Include="Scripts\affix.js" />
+    <Content Include="Scripts\alert.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\button.js" />
+    <Content Include="Scripts\carousel.js" />
+    <Content Include="Scripts\collapse.js" />
+    <Content Include="Scripts\dropdown.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\modal.js" />
+    <Content Include="Scripts\popover.js" />
+    <Content Include="Scripts\scrollspy.js" />
+    <Content Include="Scripts\tab.js" />
+    <Content Include="Scripts\tooltip.js" />
+    <Content Include="Scripts\transition.js" />
     <Content Include="Seguranca.aspx" />
     <Content Include="Site1.Master" />
+    <Content Include="Contents\css\bootstrap-theme.css.map" />
+    <Content Include="Contents\css\bootstrap-theme.min.css.map" />
+    <Content Include="Contents\css\bootstrap.css.map" />
+    <Content Include="Contents\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\.jscsrc" />
+    <Content Include="Scripts\.jshintrc" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
