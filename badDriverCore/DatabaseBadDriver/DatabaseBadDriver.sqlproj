@@ -77,6 +77,7 @@
     <None Include="procs\11 - procUserEmail_Read.sql" />
     <None Include="procs\12 - procDriver_Read.sql" />
     <None Include="procs\13 - procDriver_Update.sql" />
+    <None Include="procs\14 - procDriverFull_Read.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="procs\03 - procUser_update.sql" />

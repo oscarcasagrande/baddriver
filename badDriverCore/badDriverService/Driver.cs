@@ -25,7 +25,10 @@ namespace badDriverService
             // to do: adjust to read the implementation correct from API
             Baddriver.APIv1.APIv1 apiService = new Baddriver.APIv1.APIv1();
 
-            return new List<badDriverModel.Driver>();
+            List<badDriverModel.Driver> result = new List<badDriverModel.Driver>();
+
+
+            return result;
         }
 
         public static bool UpdateDriver(model.Driver driverToBeUpdated)

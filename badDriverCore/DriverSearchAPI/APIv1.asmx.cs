@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using utils = badDriverUtils;
+using model = badDriverModel;
+using System.Data;
 
 namespace DriverSearchAPI
 {
@@ -18,13 +21,26 @@ namespace DriverSearchAPI
     {
 
         [WebMethod]
-        public List<badDriverModel.Driver> WorstDrivers()
+        public List<model.Driver> ListWorstDrivers()
         {
-            List<badDriverModel.Driver> result = new List<badDriverModel.Driver>();
+            List<model.Driver> result = new List<model.Driver>();
 
             try
             {
-                
+                IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverFull_Read");
+                while (reader.Read())
+                {
+                    result.Add(new badDriverModel.Driver()
+                    {
+                        Color = reader["Color"].ToString(),
+                        Id = (int)reader["Id"],
+                        Incidents = new List<model.Incident>(),
+                        Label = reader["Label"].ToString(),
+                        Model = reader["Model"].ToString(),
+                        Supplier = reader["Supplier"].ToString()
+                    });
+                }
+
             }
             catch (Exception ex)
             {
