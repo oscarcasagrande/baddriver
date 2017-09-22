@@ -84,6 +84,11 @@ namespace badDriverDomain
             return result;
         }
 
+        public static bool InsertIncident(model.Incident incident, int driverId)
+        {
+            throw new NotImplementedException();
+        }
+
         public static List<model.Driver> ListDrivers()
         {
             List<model.Driver> result = new List<model.Driver>();
