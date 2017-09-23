@@ -71,9 +71,9 @@ namespace badDriverDomain
                         parameters,
                         "procDriver_Create",
                         new KeyValuePair<string, object>("@Id", driver.Id));
+
                     driver.Id = result.Id;
 
-                    result = driver;
                 }
                 catch (Exception ex)
                 {
@@ -86,7 +86,8 @@ namespace badDriverDomain
 
         public static bool InsertIncident(model.Incident incident, int driverId)
         {
-            throw new NotImplementedException();
+            // to do: need to be implemented
+            return false;
         }
 
         public static List<model.Driver> ListDrivers()

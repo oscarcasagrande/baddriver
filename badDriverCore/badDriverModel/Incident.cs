@@ -13,5 +13,6 @@ namespace badDriverModel
         public List<Photo> Photos { get; set; }
         public int Id { get; set; }
         public Incident() { }
+        public int UserId { get; set; }
     }
 }

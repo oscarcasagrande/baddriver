@@ -66,7 +66,7 @@ namespace backSimulatorForBadDriver
                 };
 
             bool incidentInserted = service.Driver.InsertIncident(incident, driverToBeUpdated.Id);
-            Console.WriteLine("Incident inserted: {0}");
+            Console.WriteLine("Incident inserted: {0}", incidentInserted);
 
             // Insert more than 1 incident for Driver
 
