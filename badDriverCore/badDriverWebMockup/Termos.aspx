@@ -2,6 +2,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            h2{
+                text-align:center;
+            }
+          p{
+              text-align:left;
+              text-indent:initial;
+          }
+            ol{text-align:left;
+               text-indent:initial;
+            }
+        </style>
+    </head>
+    <body>
     <section class="small-12 columns">
     <div class="row panel space-margin-bottom">
 
@@ -10,11 +28,10 @@
 
         <div class="small-12 medium-8 columns content">
             <h2 title="Descreve os Termos de Uso da Plataforma Descomplica">Termos de Uso</h2>
-            <p>Atualizado pela última vez em 16 de maio de 2017.</p>
-           Olá, bem vindo ao bad driver,O Bad driver é um site que tem como objetivo transpor informações que ajudarão a identificar e mostrar as ocorrencias feitas pelos motoristas no transito,O Bad Driver apresenta os termos de uso, de seu website(www.baddriver.com)</p>
+            <p style="text-align:right"><b>Atualizado pela última vez em 16 de maio de 2017.</b></p>
+          <p> Olá, bem vindo ao Bad driver,O Bad driver é um site que tem como<br /> objetivo transpor informações que ajudarão a identificar<br /> e mostrar as ocorrencias feitas pelos motoristas no transito.<br />O Bad Driver apresenta os termos de uso, de seu website(www.baddriver.com)</p>
             <p>
                 &nbsp;O uso continuado dos nossos serviços constitui a aceitação de quaisquer alterações ou modificações feitas nos Termos de Uso.</p>
-            <p>&nbsp;</p>
             <p>Os Termos de Uso e a Política de Privacidade são válidos para todos os usuários de nossa Plataforma.</p>
             <p>O uso continuado dos nossos serviços constitui a aceitação de quaisquer alterações ou modificações feitas nos Termos de Uso.</p>
             <ol>
@@ -220,5 +237,6 @@
         </div>
     </div>
 </section>
-    
+        </body>
+    </html>
 </asp:Content>

@@ -2,6 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <doctype html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <style>
+                p{
+                    text-align:left;
+                    text-indent:initial;
+                }
+                h2{
+                    text-align:center;
+                }
+            </style>
+
+        </head>
+        <body>
     <h2 style="margin: 10px 0px 5px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; background: transparent; color: rgb(0, 167, 198); font-weight: 600; font-family: &quot;Cabin Condensed&quot;, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">Política de privacidade <a href="http://baddriver.com/" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; background: transparent;">Bad Driver</a></h2>
     <p style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; line-height: 30px; color: rgb(0, 0, 0); font-family: &quot;Cabin Condensed&quot;, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
         Todas as suas informações pessoais recolhidas, serão usadas para ajuda-lo a tornar a sua visita no nosso site o mais produtiva e agradável possível.</p>
@@ -35,4 +51,6 @@
         O Bad Driver possui ligações para outros sites, os quais, a nosso ver, podem conter informações / ferramentas úteis para os nossos visitantes. A nossa política de privacidade não é aplicada a sites de terceiros, pelo que, caso visite outro site a partir do nosso deverá ler a politica de privacidade do mesmo.</p>
     <p style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; line-height: 30px; color: rgb(0, 0, 0); font-family: &quot;Cabin Condensed&quot;, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
         Não nos responsabilizamos pela política de privacidade ou conteúdo presente nesses mesmos sites.</p>
+</body>
+</html>
 </asp:Content>
