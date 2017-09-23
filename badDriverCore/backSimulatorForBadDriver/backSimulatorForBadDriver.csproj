@@ -107,7 +107,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="driver\photos\" />
-    <Folder Include="samplePhotos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="samplePhotos\badDriverSample01.jpg" />
+    <Content Include="samplePhotos\badDriverSample02.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

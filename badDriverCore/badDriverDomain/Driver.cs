@@ -107,6 +107,25 @@ namespace badDriverDomain
                 throw ex;
             }
 
+            if (incident.Photos.Count > 0)
+            {
+                foreach (var photo in incident.Photos)
+                {
+                    parameters.Clear();
+                    parameters.Add(new KeyValuePair<string, object>("@Name", photo.Name));
+                    parameters.Add(new KeyValuePair<string, object>("@Url", photo.Url));
+                    parameters.Add(new KeyValuePair<string, object>("@IncidentId", result));
+                    try
+                    {
+                        utils.DatabaseHelper.ExecuteNonQuery(parameters, "procPhoto_Create", new KeyValuePair<string, object>("@Id", photo.Id));
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
 
             return result;
         }

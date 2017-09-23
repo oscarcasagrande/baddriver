@@ -25,3 +25,22 @@ set @IncidentId  = 0;
 exec [dbo].[procIncident_create] '-20.345678', '12.7678687', 1, @id = @IncidentId output;
 
 select @IncidentId;
+
+select  * from Incident;
+
+
+
+select  * from Photo;
+
+declare @PhotoId int;
+
+select @PhotoId ;
+
+set @PhotoId = 0;
+
+exec [dbo].[procPhoto_create] 'PhotoName.jpg', 'DIR\PhotoName.jpg', @IncidentId, @id = @PhotoId output;
+exec [dbo].[procPhoto_create] 'PhotoName2.jpg', 'DIR\PhotoName2.jpg', @IncidentId, @id = @PhotoId output;
+
+select @PhotoId;
+
+select  * from Photo;

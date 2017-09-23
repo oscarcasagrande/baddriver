@@ -1,5 +1,10 @@
-﻿USE DatabaseBadDriver
+﻿Use BadDriver
+Go
+
+If exists(select 1 from sys.objects where type = 'U' and object_id = OBJECT_ID (N'[dbo].[Driver]'))
+DROP TABLE [dbo].[Driver]
 GO
+
 
 CREATE TABLE [dbo].[Driver] (
     [Id]           INT          IDENTITY (1, 1) NOT NULL,

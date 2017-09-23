@@ -105,18 +105,23 @@ namespace badDriverUtils
                         command.Parameters.Add(param);
                     }
 
+
+                    SqlParameter outputParam = new SqlParameter();
                     if (outputParameter.HasValue)
                     {
-                        SqlParameter param = new SqlParameter();
-                        param.ParameterName = outputParameter.Value.Key;
-                        param.Value = outputParameter.Value.Value;
-                        param.SqlDbType = TypeToSqlDbType(outputParameter.Value.Value.GetType());
-                        param.Direction = ParameterDirection.Output;
-                        command.Parameters.Add(param);
+                        outputParam.ParameterName = outputParameter.Value.Key;
+                        outputParam.Value = outputParameter.Value.Value;
+                        outputParam.SqlDbType = TypeToSqlDbType(outputParameter.Value.Value.GetType());
+                        outputParam.Direction = ParameterDirection.Output;
+                        command.Parameters.Add(outputParam);
                     }
 
                     result = command.ExecuteNonQuery();
 
+                    if (outputParam.Value != DBNull.Value)
+                    {
+                        result = outputParam.Value;
+                    }                    
                 }
             }
             catch (Exception)
@@ -151,17 +156,22 @@ namespace badDriverUtils
                         command.Parameters.Add(param);
                     }
 
+                    SqlParameter outputParam = new SqlParameter();
                     if (outputParameter.HasValue)
                     {
-                        SqlParameter param = new SqlParameter();
-                        param.ParameterName = outputParameter.Value.Key;
-                        param.Value = outputParameter.Value.Value;
-                        param.SqlDbType = TypeToSqlDbType(outputParameter.Value.Value.GetType());
-                        param.Direction = ParameterDirection.Output;
-                        command.Parameters.Add(param);
+                        outputParam.ParameterName = outputParameter.Value.Key;
+                        outputParam.Value = outputParameter.Value.Value;
+                        outputParam.SqlDbType = TypeToSqlDbType(outputParameter.Value.Value.GetType());
+                        outputParam.Direction = ParameterDirection.Output;
+                        command.Parameters.Add(outputParam);
                     }
 
                     result = command.ExecuteScalar();
+
+                    if (outputParam.Value != DBNull.Value)
+                    {
+                        result = outputParam.Value;
+                    }
                 }
             }
             catch (Exception)

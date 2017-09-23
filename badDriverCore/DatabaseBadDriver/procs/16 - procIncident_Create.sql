@@ -18,11 +18,6 @@ begin
 	values
 		(@Latitude, @Longitude, @UserId)
 
-	set @id = @@IDENTITY;
-
-	if (@id  = 0)
-		begin
-			select @id =  Id From Inserted
-		end
+	select @id =  SCOPE_IDENTITY()
 end
 go

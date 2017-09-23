@@ -61,13 +61,31 @@ namespace backSimulatorForBadDriver
             model.Incident incident =
                 new model.Incident()
                 {
-                    Latitude = -23.6152779,
-                    Longitude = -46.7043542,
-                    UserId = id
+                    Latitude = "-23.6152779",
+                    Longitude = "-46.7043542",
+                    UserId = id,
+                    Photos = new List<model.Photo>()
                 };
+
+            incident.Photos.Add(
+                new badDriverModel.Photo() {
+                    Name = "badDriverSample01.jpg",
+                    Url = @"\badDriverSample01.jpg",
+            });
+
+            incident.Photos.Add(
+                new badDriverModel.Photo()
+                {
+                    Name = "badDriverSample02.jpg",
+                    Url = @"\badDriverSample02.jpg",
+                });
+
+
 
             int incidentInserted = service.Driver.InsertIncident(incident, driverToBeUpdated.Id);
             Console.WriteLine("Incident inserted id: {0}", incidentInserted);
+
+            
 
             // Insert more than 1 incident for Driver
 
@@ -84,6 +102,7 @@ namespace backSimulatorForBadDriver
 
             // List total Drivers
             Console.WriteLine("List total Drivers : {0}", service.Driver.ListDriversCount());
+
 
 
             // Add Driver Photos
