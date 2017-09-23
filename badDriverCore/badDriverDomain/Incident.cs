@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace badDriverDomain
 {
-  public static  class Incident
+    public static class Incident
     {
     }
 }
