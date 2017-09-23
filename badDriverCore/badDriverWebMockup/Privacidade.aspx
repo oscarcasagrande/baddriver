@@ -9,10 +9,10 @@
             <style>
                 p{
                     text-align:left;
-                    text-indent:initial;
+                    text-indent:50 px;
                 }
                 h2{
-                    text-align:center;
+                    text-align:left;
                 }
             </style>
 
