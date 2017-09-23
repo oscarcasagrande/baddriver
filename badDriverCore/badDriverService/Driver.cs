@@ -61,9 +61,9 @@ namespace badDriverService
 
         }
 
-        public static bool InsertIncident(model.Incident incident, int driverId)
+        public static int InsertIncident(model.Incident incident, int driverId)
         {
-            bool result = false;
+            int result = 0;
 
             result = domain.Driver.InsertIncident(incident, driverId);
 

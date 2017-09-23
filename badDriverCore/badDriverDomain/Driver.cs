@@ -84,10 +84,10 @@ namespace badDriverDomain
             return result;
         }
 
-        public static bool InsertIncident(model.Incident incident, int driverId)
+        public static int InsertIncident(model.Incident incident, int driverId)
         {
 
-            bool result = false;
+            int result = 0;
 
             List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
 
@@ -97,14 +97,16 @@ namespace badDriverDomain
 
             try
             {
-                result = (bool)utils.DatabaseHelper.ExecuteNonQuery(parameters, "procIncident_create", null);
+                result = (int)utils.DatabaseHelper.ExecuteNonQuery(
+                    parameters,
+                    "procIncident_create",
+                    new KeyValuePair<string, object>("@id", result));
             }
             catch (Exception ex)
             {
-
-                 throw ex;
+                throw ex;
             }
-            
+
 
             return result;
         }

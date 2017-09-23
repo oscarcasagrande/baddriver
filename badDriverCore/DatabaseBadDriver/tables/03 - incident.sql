@@ -1,8 +1,8 @@
-﻿CREATE TABLE [dbo].[Incident]
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [latitude] NUMERIC(9, 9) NOT NULL, 
-    [longitude] NUMERIC(9, 9) NOT NULL, 
-    [userId] INT NOT NULL, 
-    [creationTime] DATETIME NOT NULL DEFAULT getdate()
-)
+﻿CREATE TABLE [dbo].[Incident] (
+    [Id]           INT            IDENTITY (1, 1) NOT NULL,
+    [latitude]     VARCHAR(50) NOT NULL,
+    [longitude]    VARCHAR(50) NOT NULL,
+    [userId]       INT            NOT NULL,
+    [creationTime] DATETIME       DEFAULT (getdate()) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
