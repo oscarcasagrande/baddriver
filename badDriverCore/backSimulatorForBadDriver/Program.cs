@@ -62,7 +62,8 @@ namespace backSimulatorForBadDriver
                 new model.Incident()
                 {
                     Latitude = -23.6152779,
-                    Longitude = -46.7043542
+                    Longitude = -46.7043542,
+                    UserId = id
                 };
 
             bool incidentInserted = service.Driver.InsertIncident(incident, driverToBeUpdated.Id);
@@ -111,7 +112,7 @@ namespace backSimulatorForBadDriver
             {
                 Active = true,
                 Email = email,
-                Id = 3,
+                Id = 1,
                 Nickname = nickname,
                 Password = password
             };

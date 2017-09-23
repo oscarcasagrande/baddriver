@@ -8,5 +8,6 @@ namespace badDriverDomain
 {
   public static  class Incident
     {
+
     }
 }

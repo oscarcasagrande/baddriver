@@ -65,7 +65,7 @@ namespace badDriverService
         {
             bool result = false;
 
-            return domain.Driver.InsertIncident(incident, driverId);
+            result = domain.Driver.InsertIncident(incident, driverId);
 
             return result;
         }

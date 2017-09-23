@@ -86,8 +86,27 @@ namespace badDriverDomain
 
         public static bool InsertIncident(model.Incident incident, int driverId)
         {
-            // to do: need to be implemented
-            return false;
+
+            bool result = false;
+
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+            parameters.Add(new KeyValuePair<string, object>("@Latitude", incident.Latitude));
+            parameters.Add(new KeyValuePair<string, object>("@Longitude", incident.Longitude));
+            parameters.Add(new KeyValuePair<string, object>("@UserId", incident.UserId));
+
+            try
+            {
+                result = (bool)utils.DatabaseHelper.ExecuteNonQuery(parameters, "procIncident_create", null);
+            }
+            catch (Exception ex)
+            {
+
+                 throw ex;
+            }
+            
+
+            return result;
         }
 
         public static List<model.Driver> ListDrivers()
