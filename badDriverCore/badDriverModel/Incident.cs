@@ -14,5 +14,6 @@ namespace badDriverModel
         public int Id { get; set; }
         public Incident() { }
         public int UserId { get; set; }
+        public int DriverId { get; set; }
     }
 }

@@ -61,11 +61,11 @@ namespace badDriverService
 
         }
 
-        public static int InsertIncident(model.Incident incident, int driverId)
+        public static int InsertIncident(model.Incident incident)
         {
             int result = 0;
 
-            result = domain.Driver.InsertIncident(incident, driverId);
+            result = domain.Driver.InsertIncident(incident);
 
             return result;
         }
