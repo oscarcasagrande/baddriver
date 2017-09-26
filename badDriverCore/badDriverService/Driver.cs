@@ -48,5 +48,26 @@ namespace badDriverService
         {
             return domain.Driver.InactiveDriverById(id);
         }
+
+        public static int ListDriversCount()
+        {
+            Baddriver.APIv1.APIv1 apiService = new Baddriver.APIv1.APIv1();
+
+            int result = 0;
+
+            result = apiService.ListDriversCount();
+
+            return result;
+
+        }
+
+        public static int InsertIncident(model.Incident incident, int driverId)
+        {
+            int result = 0;
+
+            result = domain.Driver.InsertIncident(incident, driverId);
+
+            return result;
+        }
     }
 }

@@ -29,7 +29,9 @@ namespace badDriverService.Baddriver.APIv1 {
     [System.Web.Services.WebServiceBindingAttribute(Name="APIv1Soap", Namespace="http://tempuri.org/")]
     public partial class APIv1 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback WorstDriversOperationCompleted;
+        private System.Threading.SendOrPostCallback ListWorstDriversOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ListDriversCountOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -70,32 +72,62 @@ namespace badDriverService.Baddriver.APIv1 {
         }
         
         /// <remarks/>
-        public event WorstDriversCompletedEventHandler WorstDriversCompleted;
+        public event ListWorstDriversCompletedEventHandler ListWorstDriversCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/WorstDrivers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Driver[] WorstDrivers() {
-            object[] results = this.Invoke("WorstDrivers", new object[0]);
+        public event ListDriversCountCompletedEventHandler ListDriversCountCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ListWorstDrivers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Driver[] ListWorstDrivers() {
+            object[] results = this.Invoke("ListWorstDrivers", new object[0]);
             return ((Driver[])(results[0]));
         }
         
         /// <remarks/>
-        public void WorstDriversAsync() {
-            this.WorstDriversAsync(null);
+        public void ListWorstDriversAsync() {
+            this.ListWorstDriversAsync(null);
         }
         
         /// <remarks/>
-        public void WorstDriversAsync(object userState) {
-            if ((this.WorstDriversOperationCompleted == null)) {
-                this.WorstDriversOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWorstDriversOperationCompleted);
+        public void ListWorstDriversAsync(object userState) {
+            if ((this.ListWorstDriversOperationCompleted == null)) {
+                this.ListWorstDriversOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListWorstDriversOperationCompleted);
             }
-            this.InvokeAsync("WorstDrivers", new object[0], this.WorstDriversOperationCompleted, userState);
+            this.InvokeAsync("ListWorstDrivers", new object[0], this.ListWorstDriversOperationCompleted, userState);
         }
         
-        private void OnWorstDriversOperationCompleted(object arg) {
-            if ((this.WorstDriversCompleted != null)) {
+        private void OnListWorstDriversOperationCompleted(object arg) {
+            if ((this.ListWorstDriversCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.WorstDriversCompleted(this, new WorstDriversCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.ListWorstDriversCompleted(this, new ListWorstDriversCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ListDriversCount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int ListDriversCount() {
+            object[] results = this.Invoke("ListDriversCount", new object[0]);
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ListDriversCountAsync() {
+            this.ListDriversCountAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ListDriversCountAsync(object userState) {
+            if ((this.ListDriversCountOperationCompleted == null)) {
+                this.ListDriversCountOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListDriversCountOperationCompleted);
+            }
+            this.InvokeAsync("ListDriversCount", new object[0], this.ListDriversCountOperationCompleted, userState);
+        }
+        
+        private void OnListDriversCountOperationCompleted(object arg) {
+            if ((this.ListDriversCountCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ListDriversCountCompleted(this, new ListDriversCountCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -207,14 +239,14 @@ namespace badDriverService.Baddriver.APIv1 {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Incident {
         
-        private int latitudeField;
+        private double latitudeField;
         
-        private int longitudeField;
+        private double longitudeField;
         
         private Photo[] photosField;
         
         /// <remarks/>
-        public int Latitude {
+        public double Latitude {
             get {
                 return this.latitudeField;
             }
@@ -224,7 +256,7 @@ namespace badDriverService.Baddriver.APIv1 {
         }
         
         /// <remarks/>
-        public int Longitude {
+        public double Longitude {
             get {
                 return this.longitudeField;
             }
@@ -291,17 +323,17 @@ namespace badDriverService.Baddriver.APIv1 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
-    public delegate void WorstDriversCompletedEventHandler(object sender, WorstDriversCompletedEventArgs e);
+    public delegate void ListWorstDriversCompletedEventHandler(object sender, ListWorstDriversCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class WorstDriversCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class ListWorstDriversCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal WorstDriversCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal ListWorstDriversCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -311,6 +343,32 @@ namespace badDriverService.Baddriver.APIv1 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Driver[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void ListDriversCountCompletedEventHandler(object sender, ListDriversCountCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ListDriversCountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ListDriversCountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

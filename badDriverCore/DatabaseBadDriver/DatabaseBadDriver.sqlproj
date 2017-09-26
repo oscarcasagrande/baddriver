@@ -78,6 +78,11 @@
     <None Include="procs\12 - procDriver_Read.sql" />
     <None Include="procs\13 - procDriver_Update.sql" />
     <None Include="procs\14 - procDriverFull_Read.sql" />
+    <None Include="procs\15 - procDriverCount_Read.sql" />
+    <None Include="tables\03 - incident.sql" />
+    <None Include="procs\16 - procIncident_Create.sql" />
+    <None Include="tables\04 - photo.sql" />
+    <None Include="procs\17 - procPhoto_Create.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="procs\03 - procUser_update.sql" />

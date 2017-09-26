@@ -56,11 +56,54 @@ namespace backSimulatorForBadDriver
             driverToBeUpdated = service.Driver.GetDriverById(driverToBeUpdated.Id);
             Console.WriteLine("Driver new color: {0}", driverToBeUpdated.Color);
 
+
+            // Insert incident for Driver
+            model.Incident incident =
+                new model.Incident()
+                {
+                    Latitude = "-23.6152779",
+                    Longitude = "-46.7043542",
+                    UserId = id,
+                    Photos = new List<model.Photo>()
+                };
+
+            incident.Photos.Add(
+                new badDriverModel.Photo() {
+                    Name = "badDriverSample01.jpg",
+                    Url = @"\badDriverSample01.jpg",
+            });
+
+            incident.Photos.Add(
+                new badDriverModel.Photo()
+                {
+                    Name = "badDriverSample02.jpg",
+                    Url = @"\badDriverSample02.jpg",
+                });
+
+
+
+            int incidentInserted = service.Driver.InsertIncident(incident, driverToBeUpdated.Id);
+            Console.WriteLine("Incident inserted id: {0}", incidentInserted);
+
+            
+
+            // Insert more than 1 incident for Driver
+
             // List Driver
             List<model.Driver> drivers = new List<model.Driver>();
             drivers = service.Driver.ListDrivers();
 
+            // Path for photos
+            List<model.Photo> photos = new List<model.Photo>();
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory.Replace(@"bin\Debug", string.Empty));
+
             // List Driver Photos
+
+
+            // List total Drivers
+            Console.WriteLine("List total Drivers : {0}", service.Driver.ListDriversCount());
+
+
 
             // Add Driver Photos
 
@@ -88,7 +131,7 @@ namespace backSimulatorForBadDriver
             {
                 Active = true,
                 Email = email,
-                Id = 3,
+                Id = 1,
                 Nickname = nickname,
                 Password = password
             };
