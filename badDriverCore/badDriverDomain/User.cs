@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 using System.IO;
 using model = badDriverModel;
 using utils = badDriverUtils;
+using System.Configuration;
 
 namespace badDriverDomain
 {
     public static class User
     {
+        static AppSettingsReader _reader = new AppSettingsReader();
+
+        static string _folderEmailTemplate = _reader.GetValue("folderEmailTemplate", typeof(string)).ToString();
+
         public static model.User CreateUser(model.User user)
         {
             model.User result = new model.User();
@@ -47,7 +52,8 @@ namespace badDriverDomain
 
         public static void SendWelcomeEmail(model.User user)
         {
-            string templatePath = @"C:\Users\oscar.l.casagrande\Source\Repos\baddriver\badDriverCore\badDriverWebMockup\emailTemplate\welcome.html";
+
+            string templatePath = string.Format("{0}{1}", _folderEmailTemplate, "welcome.html");
             string templateString = string.Empty;
 
             List<KeyValuePair<string, string>> toFrom = new List<KeyValuePair<string, string>>();

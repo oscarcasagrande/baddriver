@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[procDriver_Read]
+﻿use baddriver;
+go
+CREATE PROCEDURE [dbo].[procDriver_Read]
 	@Label		char(7)	,
 	@Model		varchar(50)	,
 	@Supplier	varchar(50)	,

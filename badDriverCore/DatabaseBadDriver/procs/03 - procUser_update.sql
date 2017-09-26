@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[procUser_update]
+﻿use baddriver;
+go
+
+CREATE PROCEDURE [dbo].[procUser_update]
 	@id			int
 ,	@email		varchar(350)
 ,	@password	varchar(150)
@@ -14,3 +17,5 @@ AS
 ,		[Active]	=	@active
 	where
 		id	=	@id;
+
+go

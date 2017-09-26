@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[procDriver_Update]
+﻿use baddriver;
+go
+CREATE PROCEDURE [dbo].[procDriver_Update]
 	@Id			int			,
 	@Label		char(7)		,
 	@Model		varchar(50)	,

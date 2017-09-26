@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[procUserEmail_Read]
+﻿use baddriver;
+go
+CREATE PROCEDURE [dbo].[procUserEmail_Read]
 	@email		varchar(350)
 AS
 begin	
@@ -12,4 +14,5 @@ begin
 				[dbo].[User]
 			where
 				[email]		=	@email
-end
+end;
+go

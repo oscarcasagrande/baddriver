@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[procUserNickname_Read]
+﻿use baddriver;
+go
+CREATE PROCEDURE [dbo].[procUserNickname_Read]
 	@nickname	varchar(150)
 AS
 begin	
@@ -12,4 +14,5 @@ begin
 				[dbo].[User]
 			where
 				[nickname]	=	@nickname
-end
+end;
+go

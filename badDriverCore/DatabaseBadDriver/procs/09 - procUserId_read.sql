@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[procUserId_Read]
+﻿use baddriver;
+go
+
+CREATE PROCEDURE [dbo].[procUserId_Read]
 	@id			int
 AS
 begin	
