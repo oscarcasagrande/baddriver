@@ -71,13 +71,59 @@ namespace badDriverDomain
                         parameters,
                         "procDriver_Create",
                         new KeyValuePair<string, object>("@Id", driver.Id));
+
                     driver.Id = result.Id;
 
-                    result = driver;
                 }
                 catch (Exception ex)
                 {
                     throw ex;
+                }
+            }
+
+            return result;
+        }
+
+        public static int InsertIncident(model.Incident incident, int driverId)
+        {
+
+            int result = 0;
+
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+            parameters.Add(new KeyValuePair<string, object>("@Latitude", incident.Latitude));
+            parameters.Add(new KeyValuePair<string, object>("@Longitude", incident.Longitude));
+            parameters.Add(new KeyValuePair<string, object>("@UserId", incident.UserId));
+
+            try
+            {
+                result = (int)utils.DatabaseHelper.ExecuteNonQuery(
+                    parameters,
+                    "procIncident_create",
+                    new KeyValuePair<string, object>("@id", result));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            if (incident.Photos.Count > 0)
+            {
+                foreach (var photo in incident.Photos)
+                {
+                    parameters.Clear();
+                    parameters.Add(new KeyValuePair<string, object>("@Name", photo.Name));
+                    parameters.Add(new KeyValuePair<string, object>("@Url", photo.Url));
+                    parameters.Add(new KeyValuePair<string, object>("@IncidentId", result));
+                    try
+                    {
+                        utils.DatabaseHelper.ExecuteNonQuery(parameters, "procPhoto_Create", new KeyValuePair<string, object>("@Id", photo.Id));
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
                 }
             }
 

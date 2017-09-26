@@ -26,8 +26,8 @@ begin
 				(Email, Password, Nickname, Active)
 			values
 				(@Email, @Password, @Nickname, 1);
-			set @id = @@IDENTITY;
-			select @id =  Id From [dbo].[User] where email = @email
+			
+			select @id =  SCOPE_IDENTITY()
 		end
 end
 GO

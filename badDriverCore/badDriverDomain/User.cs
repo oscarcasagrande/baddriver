@@ -26,7 +26,7 @@ namespace badDriverDomain
             try
             {
 
-                result.Id = (Int32)utils.DatabaseHelper.ExecuteNonQuery(
+                user.Id = (Int32)utils.DatabaseHelper.ExecuteNonQuery(
                     parameters,
                     "procUser_Create",
                     new KeyValuePair<string, object>("@Id", user.Id));

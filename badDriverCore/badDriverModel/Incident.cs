@@ -8,9 +8,11 @@ namespace badDriverModel
 {
     public class Incident
     {
-        public int Latitude { get; set; }
-        public int Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public List<Photo> Photos { get; set; }
+        public int Id { get; set; }
         public Incident() { }
+        public int UserId { get; set; }
     }
 }

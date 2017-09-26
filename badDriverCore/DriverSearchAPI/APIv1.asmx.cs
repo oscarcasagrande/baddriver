@@ -49,5 +49,26 @@ namespace DriverSearchAPI
 
             return result;
         }
+
+        [WebMethod]
+        public int ListDriversCount()
+        {
+            int result = 0;
+            try
+            {
+                IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverCount_Read");
+                if(reader.Read())
+                {
+                    result = (int)reader["count"];
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }
