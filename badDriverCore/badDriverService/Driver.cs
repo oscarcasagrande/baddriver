@@ -10,6 +10,8 @@ namespace badDriverService
 {
     public static class Driver
     {
+        static Baddriver.APIv1.APIv1 _apiService = new Baddriver.APIv1.APIv1();
+
         public static model.Driver GetDriverById(int id)
         {
             return domain.Driver.GetDriverById(id);
@@ -51,11 +53,9 @@ namespace badDriverService
 
         public static int ListDriversCount()
         {
-            Baddriver.APIv1.APIv1 apiService = new Baddriver.APIv1.APIv1();
-
             int result = 0;
 
-            result = apiService.ListDriversCount();
+            result = _apiService.ListDriversCount();
 
             return result;
 
@@ -66,6 +66,25 @@ namespace badDriverService
             int result = 0;
 
             result = domain.Driver.InsertIncident(incident);
+
+            return result;
+        }
+
+        public static List<model.Driver> ListWorstDrivers()
+        {
+            List<model.Driver> result = new List<model.Driver>();
+
+            foreach (var i in _apiService.ListWorstDrivers())
+            {
+                model.Driver d = new model.Driver();
+                d.Id = i.Id;
+                d.Color = i.Color;
+                d.Label = i.Label;
+                d.Model = i.Model;
+                d.Supplier = i.Supplier;
+
+                result.Add(d);
+            }
 
             return result;
         }

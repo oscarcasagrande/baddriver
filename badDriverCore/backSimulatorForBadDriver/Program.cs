@@ -65,6 +65,7 @@ namespace backSimulatorForBadDriver
                     Latitude = "-23.6152779",
                     Longitude = "-46.7043542",
                     UserId = id,
+                    DriverId = driverToBeUpdated.Id,
                     Photos = new List<model.Photo>()
                 };
 
@@ -124,14 +125,12 @@ namespace backSimulatorForBadDriver
                         Url = @"\badDriverSample02.jpg",
                     });
 
-                incidentInserted = service.Driver.InsertIncident(incident);
+                incidentInserted = service.Driver.InsertIncident(inc);
                 incident.Id = incidentInserted;
                 Console.WriteLine("{0} from {1} Incident(s) inserted(s) to driver id {2}, incident id: {3}", i, randomNext, newDriver.Id, incidentInserted);
 
                 newDriver.Incidents.Add(incident);
             }
-
-
 
 
             // List Driver
@@ -157,6 +156,12 @@ namespace backSimulatorForBadDriver
 
             // List total Drivers
             Console.WriteLine("List total Drivers : {0}", service.Driver.ListDriversCount());
+
+            // Listing worst drivers
+            foreach (var d in service.Driver.ListWorstDrivers())
+            {
+                Console.WriteLine("Listing worst Drivers {0} - {1} {2}", d.Id, d.Label, d.Model);
+            }
 
             Console.ReadKey();
         }

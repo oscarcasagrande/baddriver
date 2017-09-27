@@ -73,7 +73,7 @@ namespace badDriverDomain
                         new KeyValuePair<string, object>("@Id", driver.Id));
 
                     driver.Id = result.Id;
-
+                    result = driver;
                 }
                 catch (Exception ex)
                 {
