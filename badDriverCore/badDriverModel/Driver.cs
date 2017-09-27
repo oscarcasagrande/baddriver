@@ -16,6 +16,8 @@ namespace badDriverModel
         public string Color { get; set; }
         public List<Incident> Incidents { get; set; }
 
-        public Driver() { }
+        public Driver() {
+            this.Incidents = new List<Incident>();
+        }
     }
 }

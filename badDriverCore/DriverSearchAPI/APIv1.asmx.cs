@@ -27,7 +27,7 @@ namespace DriverSearchAPI
 
             try
             {
-                IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverFull_Read");
+                IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverWorst_Read");
                 while (reader.Read())
                 {
                     result.Add(new badDriverModel.Driver()
@@ -60,6 +60,36 @@ namespace DriverSearchAPI
                 if(reader.Read())
                 {
                     result = (int)reader["count"];
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        [WebMethod]
+        public List<model.Driver> ListAllDrivers()
+        {
+            List<model.Driver> result = new List<model.Driver>();
+
+            try
+            {
+                IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverFull_Read");
+                while (reader.Read())
+                {
+                    result.Add(new badDriverModel.Driver()
+                    {
+                        Color = reader["Color"].ToString(),
+                        Id = (int)reader["Id"],
+                        Incidents = new List<model.Incident>(),
+                        Label = reader["Label"].ToString(),
+                        Model = reader["Model"].ToString(),
+                        Supplier = reader["Supplier"].ToString()
+                    });
                 }
 
             }

@@ -65,6 +65,7 @@ namespace backSimulatorForBadDriver
                     Latitude = "-23.6152779",
                     Longitude = "-46.7043542",
                     UserId = id,
+                    DriverId = driverToBeUpdated.Id,
                     Photos = new List<model.Photo>()
                 };
 
@@ -124,11 +125,12 @@ namespace backSimulatorForBadDriver
                         Url = @"\badDriverSample02.jpg",
                     });
 
-                incidentInserted = service.Driver.InsertIncident(incident);
+                incidentInserted = service.Driver.InsertIncident(inc);
+                incident.Id = incidentInserted;
                 Console.WriteLine("{0} from {1} Incident(s) inserted(s) to driver id {2}, incident id: {3}", i, randomNext, newDriver.Id, incidentInserted);
+
+                newDriver.Incidents.Add(incident);
             }
-
-
 
 
             // List Driver
@@ -140,16 +142,26 @@ namespace backSimulatorForBadDriver
             Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory.Replace(@"bin\Debug", string.Empty));
 
             // List Driver Photos
+            List<model.Photo> driverPhotos = new List<model.Photo>();
 
+            foreach (var i in newDriver.Incidents)
+            {
+                Console.WriteLine("For Driver ID {0} we have {1} Incidents", driverToBeGot.Id, driverToBeGot.Incidents.Count());
+
+                foreach (var p in i.Photos)
+                {
+                    Console.WriteLine("----- Photo ID {0}, URL {1} and Name {2}", p.Id, p.Url, p.Name);
+                }
+            }
 
             // List total Drivers
             Console.WriteLine("List total Drivers : {0}", service.Driver.ListDriversCount());
 
-
-
-            // Add Driver Photos
-
-            // Delete Driver Photos
+            // Listing worst drivers
+            foreach (var d in service.Driver.ListWorstDrivers())
+            {
+                Console.WriteLine("Listing worst Drivers {0} - {1} {2}", d.Id, d.Label, d.Model);
+            }
 
             Console.ReadKey();
         }
@@ -192,6 +204,7 @@ namespace backSimulatorForBadDriver
             };
 
             userToBeCreated = service.User.CreateUser(userToBeCreated);
+            Console.WriteLine("User {0} created with id {1}", userToBeCreated.Nickname, userToBeCreated.Id);
 
             // E-mail send welcome
             model.User userToReceiveEmail = new model.User()
@@ -204,6 +217,7 @@ namespace backSimulatorForBadDriver
             };
 
             service.User.SendWelcomeEmail(userToReceiveEmail);
+
 
             // E-mail send password reset link
             Console.WriteLine(string.Format("User updated = {0}", service.User.ResetUserPasswordByEmailOrUsername(email, nickname)));
