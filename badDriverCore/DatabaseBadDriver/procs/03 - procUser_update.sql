@@ -1,7 +1,4 @@
-﻿use baddriver;
-go
-
-CREATE PROCEDURE [dbo].[procUser_update]
+﻿CREATE PROCEDURE [dbo].[procUser_update]
 	@id			int
 ,	@email		varchar(350)
 ,	@password	varchar(150)

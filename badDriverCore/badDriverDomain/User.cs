@@ -52,8 +52,20 @@ namespace badDriverDomain
 
         public static void SendWelcomeEmail(model.User user)
         {
+            string templatePath = string.Empty;
 
-            string templatePath = string.Format("{0}{1}", _folderEmailTemplate, "welcome.html");
+            if (_folderEmailTemplate.Length == 0)
+            {
+                templatePath =
+                    AppDomain.CurrentDomain.BaseDirectory.Replace(
+                        @"backSimulatorForBadDriver\bin\Debug",
+                            @"badDriverWebMockup\emailTemplate") + "welcome.html";
+            }
+            else
+            {
+                templatePath = string.Format("{0}{1}", _folderEmailTemplate, "welcome.html");
+            }
+
             string templateString = string.Empty;
 
             List<KeyValuePair<string, string>> toFrom = new List<KeyValuePair<string, string>>();
