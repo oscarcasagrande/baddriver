@@ -19,9 +19,8 @@ namespace DriverSearchAPI
     // [System.Web.Script.Services.ScriptService]
     public class APIv1 : System.Web.Services.WebService
     {
-
         [WebMethod]
-        public List<model.Driver>   ListWorstDrivers()
+        public List<model.Driver> ListWorstDrivers()
         {
             List<model.Driver> result = new List<model.Driver>();
 
@@ -57,7 +56,7 @@ namespace DriverSearchAPI
             try
             {
                 IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverCount_Read");
-                if(reader.Read())
+                if (reader.Read())
                 {
                     result = (int)reader["count"];
                 }
@@ -99,6 +98,18 @@ namespace DriverSearchAPI
             }
 
             return result;
+        }
+
+        [WebMethod]
+        public List<model.Driver> ListLastDrivers()
+        {
+            return new List<badDriverModel.Driver>();
+        }
+
+        [WebMethod]
+        public List<KeyValuePair<string, string>> ListPlacesWithMoreIncidents()
+        {
+            return new List<KeyValuePair<string, string>>();
         }
     }
 }
