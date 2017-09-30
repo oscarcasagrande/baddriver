@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -24,6 +25,11 @@ namespace badDriverWebMockup.Component
                     UserEmailTextBox.Text,
                     UserEmailTextBox.Text,
                     PasswordTextBox.Text);
+
+                if (user.Id > 0)
+                {
+                    FormsAuthentication.RedirectFromLoginPage(user.Nickname, RememberMeSetCheckBox.Checked);
+                }
 
                 Response.Write(string.Format("id: {0} , email: {1} , nickname {2}, active {3}", user.Id, user.Email, user.Nickname, user.Active));
             }
