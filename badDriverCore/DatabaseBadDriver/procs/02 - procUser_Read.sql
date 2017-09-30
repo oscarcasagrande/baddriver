@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[procUser_Read]
+﻿use baddriver;
+go
+
+CREATE PROCEDURE [dbo].[procUser_Read]
 	@id			int
 ,	@email		varchar(350)
 ,	@password	varchar(150)

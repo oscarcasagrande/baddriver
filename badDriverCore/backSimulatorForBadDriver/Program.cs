@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,14 +65,16 @@ namespace backSimulatorForBadDriver
                     Latitude = "-23.6152779",
                     Longitude = "-46.7043542",
                     UserId = id,
+                    DriverId = driverToBeUpdated.Id,
                     Photos = new List<model.Photo>()
                 };
 
             incident.Photos.Add(
-                new badDriverModel.Photo() {
+                new badDriverModel.Photo()
+                {
                     Name = "badDriverSample01.jpg",
                     Url = @"\badDriverSample01.jpg",
-            });
+                });
 
             incident.Photos.Add(
                 new badDriverModel.Photo()
@@ -82,12 +85,53 @@ namespace backSimulatorForBadDriver
 
 
 
-            int incidentInserted = service.Driver.InsertIncident(incident, driverToBeUpdated.Id);
+            int incidentInserted = service.Driver.InsertIncident(incident);
             Console.WriteLine("Incident inserted id: {0}", incidentInserted);
 
-            
+
 
             // Insert more than 1 incident for Driver
+            Console.WriteLine("######################################");
+            Console.WriteLine("Insert more than 1 incident for Driver");
+            Random random = new Random();
+            int randomNext = random.Next(3, 10);
+
+            model.Driver newDriver = randomicDriver();
+
+            newDriver = service.Driver.CreateDriver(newDriver);
+
+            for (int i = 1; i <= randomNext; i++)
+            {
+                model.Incident inc = new model.Incident()
+                {
+                    Latitude = "-23.6152779",
+                    Longitude = "-46.7043542",
+                    UserId = id,
+                    Photos = new List<model.Photo>(),
+                    DriverId = newDriver.Id
+                };
+
+                inc.Photos.Add(
+                    new badDriverModel.Photo()
+                    {
+                        Name = "badDriverSample01.jpg",
+                        Url = @"\badDriverSample01.jpg",
+                    });
+
+                inc.Photos.Add(
+                    new badDriverModel.Photo()
+                    {
+                        Name = "badDriverSample02.jpg",
+                        Url = @"\badDriverSample02.jpg",
+                    });
+
+                incidentInserted = service.Driver.InsertIncident(inc);
+                incident.Id = incidentInserted;
+                Console.WriteLine("{0} from {1} Incident(s) inserted(s) to driver id {2}, incident id: {3}", i, randomNext, newDriver.Id, incidentInserted);
+
+                newDriver.Incidents.Add(incident);
+            }
+
 
             // List Driver
             List<model.Driver> drivers = new List<model.Driver>();
@@ -98,18 +142,53 @@ namespace backSimulatorForBadDriver
             Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory.Replace(@"bin\Debug", string.Empty));
 
             // List Driver Photos
+            List<model.Photo> driverPhotos = new List<model.Photo>();
 
+            foreach (var i in newDriver.Incidents)
+            {
+                Console.WriteLine("For Driver ID {0} we have {1} Incidents", driverToBeGot.Id, driverToBeGot.Incidents.Count());
+
+                foreach (var p in i.Photos)
+                {
+                    Console.WriteLine("----- Photo ID {0}, URL {1} and Name {2}", p.Id, p.Url, p.Name);
+                }
+            }
 
             // List total Drivers
             Console.WriteLine("List total Drivers : {0}", service.Driver.ListDriversCount());
 
-
-
-            // Add Driver Photos
-
-            // Delete Driver Photos
+            // Listing worst drivers
+            foreach (var d in service.Driver.ListWorstDrivers())
+            {
+                Console.WriteLine("Listing worst Drivers {0} - {1} {2}", d.Id, d.Label, d.Model);
+            }
 
             Console.ReadKey();
+        }
+
+        private static model.Driver randomicDriver()
+        {
+            model.Driver d = new model.Driver();
+
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for (int i = 0; i < 3; i++)
+            {
+                d.Label += new string(Enumerable.Repeat(chars, 1).Select(s => s[new Random().Next(26)]).ToArray());
+            }
+
+            Random label = new Random();
+            d.Label += label.Next(1000, 9999).ToString();
+
+            Random randomColor = new Random();
+            KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
+            KnownColor randomColorName = names[randomColor.Next(names.Length)];
+
+            d.Color = Color.FromKnownColor(randomColorName).Name;
+
+            d.Supplier = "Ford";
+            d.Model = "Fiesta";
+
+            return d;
         }
 
         private static void testUserFeatures()
@@ -125,6 +204,7 @@ namespace backSimulatorForBadDriver
             };
 
             userToBeCreated = service.User.CreateUser(userToBeCreated);
+            Console.WriteLine("User {0} created with id {1}", userToBeCreated.Nickname, userToBeCreated.Id);
 
             // E-mail send welcome
             model.User userToReceiveEmail = new model.User()
@@ -137,6 +217,7 @@ namespace backSimulatorForBadDriver
             };
 
             service.User.SendWelcomeEmail(userToReceiveEmail);
+
 
             // E-mail send password reset link
             Console.WriteLine(string.Format("User updated = {0}", service.User.ResetUserPasswordByEmailOrUsername(email, nickname)));

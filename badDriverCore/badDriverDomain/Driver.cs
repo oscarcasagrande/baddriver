@@ -73,7 +73,7 @@ namespace badDriverDomain
                         new KeyValuePair<string, object>("@Id", driver.Id));
 
                     driver.Id = result.Id;
-
+                    result = driver;
                 }
                 catch (Exception ex)
                 {
@@ -84,7 +84,7 @@ namespace badDriverDomain
             return result;
         }
 
-        public static int InsertIncident(model.Incident incident, int driverId)
+        public static int InsertIncident(model.Incident incident)
         {
 
             int result = 0;
@@ -94,6 +94,7 @@ namespace badDriverDomain
             parameters.Add(new KeyValuePair<string, object>("@Latitude", incident.Latitude));
             parameters.Add(new KeyValuePair<string, object>("@Longitude", incident.Longitude));
             parameters.Add(new KeyValuePair<string, object>("@UserId", incident.UserId));
+            parameters.Add(new KeyValuePair<string, object>("@DriverId", incident.DriverId));
 
             try
             {
@@ -115,6 +116,7 @@ namespace badDriverDomain
                     parameters.Add(new KeyValuePair<string, object>("@Name", photo.Name));
                     parameters.Add(new KeyValuePair<string, object>("@Url", photo.Url));
                     parameters.Add(new KeyValuePair<string, object>("@IncidentId", result));
+
                     try
                     {
                         utils.DatabaseHelper.ExecuteNonQuery(parameters, "procPhoto_Create", new KeyValuePair<string, object>("@Id", photo.Id));

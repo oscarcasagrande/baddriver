@@ -10,6 +10,7 @@ CREATE TABLE [dbo].[Incident] (
     [latitude]     VARCHAR(50) NOT NULL,
     [longitude]    VARCHAR(50) NOT NULL,
     [userId]       INT            NOT NULL,
+	[driverId]     INT            NOT NULL,
     [creationTime] DATETIME       DEFAULT (getdate()) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );

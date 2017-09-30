@@ -12,7 +12,12 @@ namespace badDriverModel
         public string Longitude { get; set; }
         public List<Photo> Photos { get; set; }
         public int Id { get; set; }
-        public Incident() { }
         public int UserId { get; set; }
+        public int DriverId { get; set; }
+
+        public Incident()
+        {
+            this.Photos = new List<Photo>();
+        }
     }
 }

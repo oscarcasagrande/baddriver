@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[procDriverFull_Read]
+﻿use baddriver;
+go
+
+CREATE PROCEDURE [dbo].[procDriverFull_Read]
 	@id			int
 AS
 begin	
@@ -11,3 +14,4 @@ begin
 			from
 				[dbo].[Driver]
 end
+go

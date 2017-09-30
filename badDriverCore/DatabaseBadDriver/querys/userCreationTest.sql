@@ -1,18 +1,22 @@
---declare @userId int;
+use baddriver;
 
---set @userId = 0;
+declare @userId int;
 
---select * from [User];
+set @userId = 0;
 
---select @userId;
+select * from [User];
 
---exec [dbo].[procUser_create] "teste3@teste.com.br", "123456", "nickname3", @id = @userId output;
+select @userId;
 
---select @userId;
+exec [dbo].[procUser_create] "teste3@teste.com.br", "123456", "nickname3", @id = @userId output;
 
---select * from [User];
+exec [dbo].[procUser_create] "bacana@teste.com.br", "123456", "bacana", @id = @userId output;
 
---exec [dbo].[procUser_read] 0, 'rafael.redoval@gmail.com', '123456', '';
+select @userId;
+
+select * from [User];
+
+exec [dbo].[procUser_read] 0, 'rafael.redoval@gmail.com', '123456', '';
 
 select  * from Incident;
 

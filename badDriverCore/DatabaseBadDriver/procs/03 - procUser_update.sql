@@ -14,3 +14,5 @@ AS
 ,		[Active]	=	@active
 	where
 		id	=	@id;
+
+go

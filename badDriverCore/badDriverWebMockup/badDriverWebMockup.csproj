@@ -78,7 +78,6 @@
     <Content Include="Contents\css\carousel.css" />
     <Content Include="Contents\css\cover.css" />
     <Content Include="Contents\css\footer.css" />
-    <Content Include="Contents\css\SiteMaster.css" />
     <Content Include="emailTemplate\postAnswer.html" />
     <Content Include="emailTemplate\uploadPhotos.html" />
     <Content Include="emailTemplate\passwordResetLink.html" />
@@ -94,7 +93,14 @@
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\collapse.js" />
     <Content Include="Scripts\dropdown.js" />
-    <Content Include="Scripts\ie-emulation-modes-warning.js" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\modal.js" />
