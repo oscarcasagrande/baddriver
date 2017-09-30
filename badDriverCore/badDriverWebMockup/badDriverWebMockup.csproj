@@ -92,6 +92,9 @@
     <Content Include="Scripts\button.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\collapse.js" />
+    <Content Include="Scripts\core\cacheModel.js" />
+    <Content Include="Scripts\core\cacheModelMotorcycle.js" />
+    <Content Include="Scripts\core\core.js" />
     <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
