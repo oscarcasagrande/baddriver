@@ -15,14 +15,29 @@ namespace badDriverCore.domain
         {
             model.User result = new model.User();
 
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
+
+            parameters.Add(new KeyValuePair<string, object>("@email", user.Email));
+            parameters.Add(new KeyValuePair<string, object>("@nickname", user.Nickname));
+            parameters.Add(new KeyValuePair<string, object>("@password", user.Password));
+
+
             try
             {
 
-            }
-            catch (Exception)
-            {
+                result.Id = (Int32)utils.DatabaseHelper.ExecuteNonQuery(
+                    parameters,
+                    "procUser_Create",
+                    new KeyValuePair<string, object>("@Id", user.Id));
 
-                throw;
+                user.Active = true;
+
+                result = user;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally { }
 
@@ -71,6 +86,7 @@ namespace badDriverCore.domain
                         result.Email = reader["email"].ToString();
                         result.Nickname = reader["nickname"].ToString();
                         result.Active = (bool)reader["active"];
+                        result.Password = reader["password"].ToString();
                     }
                 }
             }
@@ -80,7 +96,6 @@ namespace badDriverCore.domain
             }
             finally
             {
-
                 if (reader.IsClosed == false)
                 {
                     reader.Close();
@@ -137,23 +152,22 @@ namespace badDriverCore.domain
         {
             bool result = false;
 
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
 
-            parameters.Add(new KeyValuePair<string, string>("@id", user.Id.ToString()));
-            parameters.Add(new KeyValuePair<string, string>("@email", user.Email));
-            parameters.Add(new KeyValuePair<string, string>("@Nickname", user.Nickname));
-            parameters.Add(new KeyValuePair<string, string>("@password", user.Password));
-            parameters.Add(new KeyValuePair<string, string>("@active", user.Active.ToString()));
+            parameters.Add(new KeyValuePair<string, object>("@id", user.Id.ToString()));
+            parameters.Add(new KeyValuePair<string, object>("@email", user.Email));
+            parameters.Add(new KeyValuePair<string, object>("@Nickname", user.Nickname));
+            parameters.Add(new KeyValuePair<string, object>("@password", user.Password));
+            parameters.Add(new KeyValuePair<string, object>("@active", user.Active.ToString()));
 
             try
             {
-                result = utils.DatabaseHelper.ExecuteNonQuery(parameters, "procUser_update");
+                utils.DatabaseHelper.ExecuteNonQuery(parameters, "procUser_update", null);
+                result = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
-                throw;
+                throw ex;
             }
             finally
             {
@@ -204,9 +218,9 @@ namespace badDriverCore.domain
             model.User result = new model.User();
 
             List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>();
-            
+
             parameters.Add(new KeyValuePair<string, object>("@nickname", username));
-            
+
             IDataReader reader = null;
 
             try
