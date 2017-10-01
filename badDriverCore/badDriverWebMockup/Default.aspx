@@ -56,7 +56,7 @@
             <div class="carousel-caption">
             <asp:TextBox ID="TextBox1" runat="server" Height="31px" Width="231px"></asp:TextBox>
             
-                <asp:Button ID="Button2" runat="server" BackColor="#666666" Height="34px" Text="busca" />
+                <asp:Button ID="Button1" runat="server" Text="Button" />
             
             </div>
           </div>
