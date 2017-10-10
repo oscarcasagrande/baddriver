@@ -3,11 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:label id="Label4" runat="server" text="name"></asp:label>
-    <asp:textbox id="Textbox1" runat="server" textmode="Email"></asp:textbox>
-   
-     <br />
-    
     <asp:label id="UserEmailLabel" runat="server" text="User/E-mail"></asp:label>
     <asp:textbox id="UserEmailTextBox" runat="server" textmode="Email"></asp:textbox>
 
