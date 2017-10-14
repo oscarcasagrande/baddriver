@@ -6,7 +6,8 @@
 <head runat="server">
     <title>Bad Driver</title>
 
-
+    <link href="Contents/css/bootstrap.css" rel="stylesheet" />
+    <link href="Contents/css/cover.css" rel="stylesheet" />
     <!-- Última versão CSS compilada e minificada -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
 
@@ -21,28 +22,87 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div id="divTop">
-        <div id="divMenu">
-            <a href="/Default.aspx">Home</a>
-            <a href="/Login.aspx">Login</a>
-            <a href="/Cadastro.aspx">Cadastro</a>
-            <a href="/Denunciar.aspx">Denunciar</a>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Bad Driver</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/Default.aspx">Home</a></li>
+                    <li><a href="/Login.aspx">Login</a></li>
+                    <li><a href="/Cadastro.aspx">Cadastro</a></li>
+                    <li><a href="/Denunciar.aspx">Denunciar</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+                    <li><a href="../navbar-static-top/">Static top</a></li>
+                    <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
         </div>
-    </div>
+        <!--/.container-fluid -->
+    </nav>
     <form id="form1" runat="server">
+        <div id="divTop">
+            <div id="divMenu">
+                <asp:LoginName ID="UserLoginName" runat="server" Font-Bold="true" />
+                <asp:LoginStatus ID="UserLoginStatus" runat="server" />
+            </div>
+        </div>
         <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>
-    <div id="divFooter" >
-        <a href="/Termos.aspx">Termos</a>
-        <a href="/Privacidade.aspx">Privacidade</a>
-        <a href="/Seguranca.aspx">Seguran&ccedil;a</a>
-        <a href="https://github.com/oscarcasagrande/baddriver" target="_blank">C&oacute;digo fonte</a>
-        <a href="https://oscarcasagrande.wordpress.com/" target="_blank">Blog</a>
-        <a href="/Sobre.aspx">Sobre</a>
-        <a href="/Devdream.aspx">DevDream</a>
+
+    <div id="divFooter">
+        <div class="container text-center">
+            <hr />
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="https://github.com/oscarcasagrande/baddriver" target="_blank">C&oacute;digo fonte</a></li>
+                            <li><a href="/Devdream.aspx">DevDream</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="https://oscarcasagrande.wordpress.com/" target="_blank">Blog</a></li>
+                            <li><a href="/Termos.aspx">Termos</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="/Sobre.aspx">About</a></li>
+                            <li><a href="/Privacidade.aspx">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr />
+
+            </div>
+        </div>
     </div>
 </body>
 </html>
