@@ -13,6 +13,33 @@ namespace badDriverWebMockup {
     public partial class UploadDriver {
         
         /// <summary>
+        /// LabelTextbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox LabelTextbox;
+        
+        /// <summary>
+        /// AddPhotos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddPhotos;
+        
+        /// <summary>
+        /// ColorDropdownlist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ColorDropdownlist;
+        
+        /// <summary>
         /// archivesFileUpload control.
         /// </summary>
         /// <remarks>

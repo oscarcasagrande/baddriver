@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using model = badDriverModel;
+using service = badDriverService;
 
 namespace badDriverWebMockup
 {
@@ -20,7 +22,7 @@ namespace badDriverWebMockup
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            badDriverCore.model.User user = new badDriverCore.model.User()
+            model.User user = new model.User()
             {
                 Active = false,
                 Email = UserEmailTextBox.Text,
@@ -31,8 +33,8 @@ namespace badDriverWebMockup
 
             try
             {
-                user = badDriverCore.domain.User.CreateUser(user);
-                user = badDriverCore.domain.User.GetUserByIOrEmailOrUsernameAndPassword(0, user.Email, user.Nickname, user.Password);
+                user = service.User.CreateUser(user);
+                user = service.User.GetUserByIOrEmailOrUsernameAndPassword(0, user.Email, user.Nickname, user.Password);
                 if (user.Id == 0)
                 {
                     throw new Exception("User not created.");

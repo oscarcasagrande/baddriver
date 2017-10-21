@@ -43,6 +43,8 @@ namespace badDriverService
             // to do: adjust to read the implementation correct from API
             Baddriver.APIv1.APIv1 apiService = new Baddriver.APIv1.APIv1();
 
+
+            var x = apiService.ListWorstDrivers();
             return new List<badDriverModel.Driver>();
         }
 

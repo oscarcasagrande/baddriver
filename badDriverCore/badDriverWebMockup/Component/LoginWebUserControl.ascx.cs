@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using model = badDriverModel;
+using service = badDriverService;
 
 namespace badDriverWebMockup.Component
 {
@@ -19,15 +21,17 @@ namespace badDriverWebMockup.Component
         {
             try
             {
-                badDriverCore.model.User user =
-                badDriverCore.domain.User.GetUserByIOrEmailOrUsernameAndPassword(
-                    0,
-                    UserEmailTextBox.Text,
-                    UserEmailTextBox.Text,
-                    PasswordTextBox.Text);
+                model.User user =
+                    service.User.GetUserByIOrEmailOrUsernameAndPassword(
+                        0,
+                        UserEmailTextBox.Text,
+                        UserEmailTextBox.Text,
+                        PasswordTextBox.Text);
 
                 if (user.Id > 0)
                 {
+                    Session["UserId"] = user.Id;
+                    Session["UserEmail"] = user.Email;
                     FormsAuthentication.RedirectFromLoginPage(user.Nickname, RememberMeSetCheckBox.Checked);
                 }
 
