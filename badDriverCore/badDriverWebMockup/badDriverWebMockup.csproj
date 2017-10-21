@@ -135,7 +135,9 @@
     <Content Include="Login.aspx" />
     <Content Include="Privacidade.aspx" />
     <Content Include="Sobre.aspx" />
+    <Content Include="style\stylish-search-box.css" />
     <Content Include="Termos.aspx" />
+    <Content Include="teste.aspx" />
     <Content Include="UploadDriver.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -231,6 +233,13 @@
     </Compile>
     <Compile Include="Termos.aspx.designer.cs">
       <DependentUpon>Termos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="teste.aspx.cs">
+      <DependentUpon>teste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="teste.aspx.designer.cs">
+      <DependentUpon>teste.aspx</DependentUpon>
     </Compile>
     <Compile Include="UploadDriver.aspx.cs">
       <DependentUpon>UploadDriver.aspx</DependentUpon>
