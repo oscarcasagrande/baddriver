@@ -241,13 +241,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\badDriverCore\badDriverCore.csproj">
-      <Project>{acdb2d5e-e60d-436e-887a-fbd3b0f3f953}</Project>
-      <Name>badDriverCore</Name>
-    </ProjectReference>
+    <Folder Include="DriversPhotos\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DriversPhotos\" />
+    <ProjectReference Include="..\badDriverModel\badDriverModel.csproj">
+      <Project>{428329b6-e462-49e8-86d6-897cca57f71e}</Project>
+      <Name>badDriverModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\badDriverService\badDriverService.csproj">
+      <Project>{16a5eb80-5b23-4fa6-b383-04046c0c2fdf}</Project>
+      <Name>badDriverService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,8 +8,8 @@ using System.IO;
 using System.Configuration;
 using System.Web.Security;
 using System.Web.UI.HtmlControls;
-using model = badDriverCore.model;
-using domain = badDriverCore.domain;
+using model = badDriverModel;
+using service = badDriverService;
 
 namespace badDriverWebMockup
 {
@@ -26,27 +26,40 @@ namespace badDriverWebMockup
             }
 
 
-            model.Driver driver = new model.Driver();
-
-            if (driver.Id == 0)
-            {
-                driver.Color = ColorDropdownlist.Text;
-                driver.Label = LabelTextbox.Text;
-                driver.Model = Request["ModelSelect"];
-                driver.Supplier = Request["SupplierSelect"];
-
-
-
-                //driver = domain.Driver.CreateDriver(driver);
-            }
-
             HtmlForm form = (HtmlForm)Master.FindControl("form1");
             form.Attributes.Add("class", "dropzone");
 
             if (IsPostBack)
             {
+                model.Driver driver = new model.Driver();
+
+                if (driver.Id == 0)
+                {
+                    driver.Color = ColorDropdownlist.Text;
+                    driver.Label = LabelTextbox.Text;
+                    driver.Model = Request["ModelSelect"];
+                    driver.Supplier = Request["SupplierSelect"];
+
+                    driver.Incidents.Add(new model.Incident()
+                    {
+                        Latitude = Request.Form["latitudeTextBox"].ToString(),
+                        Longitude = Request.Form["longitudeTextBox"].ToString(),
+                        DriverId = driver.Id,
+                        UserId = (int)Session["UserId"]
+                    });
+                }
+
+                int i = 0;
+                string savePath = string.Empty;
+                string saveFile = string.Empty;
+                model.Photo p = new model.Photo();
+
                 foreach (var s in Request.Files.AllKeys)
                 {
+                    i++;
+                    savePath = string.Empty;
+                    saveFile = string.Empty;
+
                     HttpPostedFile file = Request.Files[s];
                     int fileSizeInBytes = file.ContentLength;
                     string fileName = file.FileName;
@@ -57,12 +70,23 @@ namespace badDriverWebMockup
                         fileExtension = Path.GetExtension(fileName);
                     }
 
-                    string savePath = Path.Combine(Request.PhysicalApplicationPath, dir);
-                    string saveFile = Path.Combine(savePath, file.FileName);
+                    savePath = Path.Combine(Request.PhysicalApplicationPath, dir, driver.Id.ToString());
+                    saveFile = Path.Combine(savePath, i.ToString(), fileExtension);
 
 
                     file.SaveAs(saveFile);
+                    p = new model.Photo()
+                    {
+                        IncidentId = driver.Incidents[0].Id,
+                        Name = fileName,
+                        Url = saveFile
+                    };
+
                 }
+
+                driver.Incidents[0].Photos.Add(p);
+
+                //driver = domain.Driver.CreateDriver(driver);
             }
         }
 

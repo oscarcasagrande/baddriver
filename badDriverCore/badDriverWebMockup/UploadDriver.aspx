@@ -17,8 +17,7 @@
         <asp:Button runat="server" ID="AddPhotos" Text="Upload Driver" />
         <br />
         <label>Board:</label>
-        <asp:TextBox ID="BoardTextbox" runat="server"></asp:TextBox>
-        <br />
+
         <label>Supplier:</label>
         <select id="SupplierSelect" onchange="modelSelectChange();">
             <option value=""></option>
@@ -28,9 +27,21 @@
         <select id="ModelSelect">
             <option value=""></option>
         </select>
+
         <br />
         <label>Color:</label>
         <asp:DropDownList ID="ColorDropdownlist" runat="server"></asp:DropDownList>
+        <br />
+
+        <div class="hidden">
+            <input type="text" id="latitudeTextBox" name="latitudeTextBox" />
+            <input type="text" id="longitudeTextBox" name="longitudeTextBox" />
+        </div>
+        <br />
+
+        <p id="divGeolocation"></p>
+
+        <div id="mapholder"></div>
     </div>
     <div>
         <div class="fallback">
@@ -42,6 +53,7 @@
         </div>
         <script>
             bindSupplier('form1');
+            getLocation('divGeolocation');
         </script>
     </div>
 </asp:Content>
