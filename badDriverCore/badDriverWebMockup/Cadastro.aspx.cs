@@ -25,7 +25,7 @@ namespace badDriverWebMockup
             model.User user = new model.User()
             {
                 Active = false,
-                Email = UserEmailTextBox.Text,
+              
                 Id = 0,
                 Nickname = NicknameTextBox.Text,
                 Password = PasswordTextBox.Text
