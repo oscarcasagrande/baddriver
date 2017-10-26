@@ -92,6 +92,9 @@
     <Content Include="Scripts\button.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\collapse.js" />
+    <Content Include="Scripts\core\cacheModel.js" />
+    <Content Include="Scripts\core\cacheModelMotorcycle.js" />
+    <Content Include="Scripts\core\core.js" />
     <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -132,7 +135,9 @@
     <Content Include="Login.aspx" />
     <Content Include="Privacidade.aspx" />
     <Content Include="Sobre.aspx" />
+    <Content Include="style\stylish-search-box.css" />
     <Content Include="Termos.aspx" />
+    <Content Include="teste.aspx" />
     <Content Include="UploadDriver.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -229,6 +234,13 @@
     <Compile Include="Termos.aspx.designer.cs">
       <DependentUpon>Termos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="teste.aspx.cs">
+      <DependentUpon>teste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="teste.aspx.designer.cs">
+      <DependentUpon>teste.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UploadDriver.aspx.cs">
       <DependentUpon>UploadDriver.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -238,13 +250,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\badDriverCore\badDriverCore.csproj">
-      <Project>{acdb2d5e-e60d-436e-887a-fbd3b0f3f953}</Project>
-      <Name>badDriverCore</Name>
-    </ProjectReference>
+    <Folder Include="DriversPhotos\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DriversPhotos\" />
+    <ProjectReference Include="..\badDriverModel\badDriverModel.csproj">
+      <Project>{428329b6-e462-49e8-86d6-897cca57f71e}</Project>
+      <Name>badDriverModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\badDriverService\badDriverService.csproj">
+      <Project>{16a5eb80-5b23-4fa6-b383-04046c0c2fdf}</Project>
+      <Name>badDriverService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -10,6 +10,6 @@
 namespace badDriverWebMockup {
     
     
-    public partial class Termos {
+    public partial class teste {
     }
 }

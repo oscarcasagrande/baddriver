@@ -2,7 +2,6 @@
 go
 
 CREATE PROCEDURE [dbo].[procDriverFull_Read]
-	@id			int
 AS
 begin	
 			SELECT

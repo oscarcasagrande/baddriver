@@ -6,7 +6,7 @@
     <asp:Label ID="Label1" runat="server" Text="Nova senha"></asp:Label>
     <asp:TextBox ID="TextBox2" runat="server" TextMode="Password"></asp:TextBox>
     <br/>
-    <asp:Label ID="Label2" runat="server" Text="redigitar senha"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="confirme sua senha"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" TextMode="Password"></asp:TextBox>
     &nbsp;
 	<br />
