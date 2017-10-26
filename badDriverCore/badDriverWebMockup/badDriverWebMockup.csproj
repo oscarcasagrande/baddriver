@@ -130,7 +130,7 @@
   <ItemGroup>
     <Content Include="Cadastro.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Denunciar.aspx" />
+    <Content Include="RecuperarSenha.aspx" />
     <Content Include="Devdream.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Privacidade.aspx" />
@@ -170,12 +170,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Denunciar.aspx.cs">
-      <DependentUpon>Denunciar.aspx</DependentUpon>
+    <Compile Include="RecuperarSenha.aspx.cs">
+      <DependentUpon>RecuperarSenha.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Denunciar.aspx.designer.cs">
-      <DependentUpon>Denunciar.aspx</DependentUpon>
+    <Compile Include="RecuperarSenha.aspx.designer.cs">
+      <DependentUpon>RecuperarSenha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Devdream.aspx.cs">
       <DependentUpon>Devdream.aspx</DependentUpon>

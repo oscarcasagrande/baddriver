@@ -33,7 +33,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+  <form id="form1" runat="server">
         <div id="divTop">
             <div id="divMenu">
                 <asp:LoginName ID="UserLoginName" runat="server" Font-Bold="true" />

@@ -9,4 +9,4 @@
 <asp:CheckBox ID="RememberMeSetCheckBox" runat="server" Text="Manter-me Logado" />
 <br />
 <a href="">Forgot my user</a>
-<a href="">Forgot my password</a>
+<a href="/RecuperarSenha.aspx">Forgot my password</a>
