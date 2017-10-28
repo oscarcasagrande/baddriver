@@ -14,6 +14,8 @@ namespace badDriverUtils
     {
         static NetworkCredential _credential;
 
+        static string _to;
+
         static NetworkCredential getEmailCredentials()
         {
             AppSettingsReader reader = new AppSettingsReader();
@@ -21,8 +23,9 @@ namespace badDriverUtils
 
             try
             {
-                _credential.UserName = reader.GetValue("username", typeof(string)).ToString();
-                _credential.Password = reader.GetValue("password", typeof(string)).ToString();
+                _credential.UserName = reader.GetValue("smtpUsername", typeof(string)).ToString();
+                _credential.Password = reader.GetValue("smtpPassword", typeof(string)).ToString();
+                _to = reader.GetValue("to", typeof(string)).ToString();
             }
             catch (Exception ex)
             {
@@ -58,7 +61,7 @@ namespace badDriverUtils
             try
             {
                 result.Credentials = getEmailCredentials();
-                result.EnableSsl = (bool)(reader.GetValue("enableSsl", typeof(bool)));
+                result.EnableSsl = (bool)(reader.GetValue("smtpEnableSsl", typeof(bool)));
                 result.Host = (reader.GetValue("smtpServer", typeof(string))).ToString();
                 result.Port = (int)(reader.GetValue("smtpPort", typeof(int)));
 
@@ -72,7 +75,7 @@ namespace badDriverUtils
             return result;
         }
 
-        public static bool sendEmail(string to, string subject, string message, bool isHtmlBody, List<KeyValuePair<string, string>> toFrom)
+        public static bool sendEmail(string subject, string message, bool isHtmlBody, List<KeyValuePair<string, string>> toFrom)
         {
             bool result = false;
             MailMessage mail = null;
@@ -82,7 +85,7 @@ namespace badDriverUtils
                 using (mail = new MailMessage())
                 {
 
-                    mail.To.Add(to);
+                    mail.To.Add(_to);
                     mail.IsBodyHtml = isHtmlBody;
                     mail.Subject = subject;
 

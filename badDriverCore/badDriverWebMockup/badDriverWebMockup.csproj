@@ -285,6 +285,10 @@
       <Project>{16a5eb80-5b23-4fa6-b383-04046c0c2fdf}</Project>
       <Name>badDriverService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\badDriverUtils\badDriverUtils.csproj">
+      <Project>{ac818782-adb2-443d-bf1f-2343f9f23155}</Project>
+      <Name>badDriverUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
