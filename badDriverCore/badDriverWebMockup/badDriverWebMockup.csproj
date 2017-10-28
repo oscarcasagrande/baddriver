@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Component\LoginWebUserControl.ascx" />
     <Content Include="ConfirmacaoCadastro.aspx" />
+    <Content Include="ConsultOfWorstDrivers.aspx" />
     <Content Include="Contents\carousel.css" />
     <Content Include="Contents\css\assets\ie10-viewport-bug-workaround.css" />
     <Content Include="Contents\css\bootstrap-theme.css" />
@@ -162,6 +163,13 @@
     </Compile>
     <Compile Include="ConfirmacaoCadastro.aspx.designer.cs">
       <DependentUpon>ConfirmacaoCadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultOfWorstDrivers.aspx.cs">
+      <DependentUpon>ConsultOfWorstDrivers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultOfWorstDrivers.aspx.designer.cs">
+      <DependentUpon>ConsultOfWorstDrivers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
