@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Component\LoginWebUserControl.ascx" />
     <Content Include="ConfirmacaoCadastro.aspx" />
+    <Content Include="Contato.aspx" />
     <Content Include="Contents\carousel.css" />
     <Content Include="Contents\css\assets\ie10-viewport-bug-workaround.css" />
     <Content Include="Contents\css\bootstrap-theme.css" />
@@ -131,7 +132,7 @@
   <ItemGroup>
     <Content Include="Cadastro.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Denunciar.aspx" />
+    <Content Include="RecuperarSenha.aspx" />
     <Content Include="Devdream.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Privacidade.aspx" />
@@ -164,6 +165,13 @@
     <Compile Include="ConfirmacaoCadastro.aspx.designer.cs">
       <DependentUpon>ConfirmacaoCadastro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Contato.aspx.cs">
+      <DependentUpon>Contato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contato.aspx.designer.cs">
+      <DependentUpon>Contato.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -171,12 +179,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Denunciar.aspx.cs">
-      <DependentUpon>Denunciar.aspx</DependentUpon>
+    <Compile Include="RecuperarSenha.aspx.cs">
+      <DependentUpon>RecuperarSenha.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Denunciar.aspx.designer.cs">
-      <DependentUpon>Denunciar.aspx</DependentUpon>
+    <Compile Include="RecuperarSenha.aspx.designer.cs">
+      <DependentUpon>RecuperarSenha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Devdream.aspx.cs">
       <DependentUpon>Devdream.aspx</DependentUpon>

@@ -11,7 +11,7 @@ namespace badDriverWebMockup
 {
 
 
-    public partial class Denunciar
+    public partial class Contato
     {
     }
 }
