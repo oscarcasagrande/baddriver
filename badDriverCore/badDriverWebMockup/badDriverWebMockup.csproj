@@ -83,6 +83,7 @@
     <Content Include="emailTemplate\passwordResetLink.html" />
     <Content Include="emailTemplate\passwordResetNotification.html" />
     <Content Include="emailTemplate\welcome.html" />
+    <Content Include="ListWorstDrivers.aspx" />
     <Content Include="packages.config" />
     <Content Include="Redefinirsenha.aspx" />
     <Content Include="Scripts\affix.js" />
@@ -183,6 +184,13 @@
     </Compile>
     <Compile Include="Devdream.aspx.designer.cs">
       <DependentUpon>Devdream.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListWorstDrivers.aspx.cs">
+      <DependentUpon>ListWorstDrivers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListWorstDrivers.aspx.designer.cs">
+      <DependentUpon>ListWorstDrivers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
