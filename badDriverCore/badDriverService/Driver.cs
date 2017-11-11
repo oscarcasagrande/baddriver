@@ -84,6 +84,7 @@ namespace badDriverService
                 d.Label = i.Label;
                 d.Model = i.Model;
                 d.Supplier = i.Supplier;
+                d.IncidentQuantity = i.IncidentQuantity;
 
                 result.Add(d);
             }

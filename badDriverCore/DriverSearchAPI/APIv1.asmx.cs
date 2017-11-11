@@ -26,18 +26,23 @@ namespace DriverSearchAPI
 
             try
             {
-                IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverWorst_Read");
+                IDataReader reader = utils.DatabaseHelper.ExecuteReader(new List<KeyValuePair<string, object>>(), "procDriverTop10Worst_Read");
                 while (reader.Read())
                 {
-                    result.Add(new badDriverModel.Driver()
+                    badDriverModel.Driver d = new badDriverModel.Driver()
                     {
                         Color = reader["Color"].ToString(),
                         Id = (int)reader["Id"],
                         Incidents = new List<model.Incident>(),
                         Label = reader["Label"].ToString(),
                         Model = reader["Model"].ToString(),
-                        Supplier = reader["Supplier"].ToString()
-                    });
+                        Supplier = reader["Supplier"].ToString(),
+                        IncidentQuantity = (int)reader["quantity"]
+                    };
+
+                    
+
+                    result.Add(d);
                 }
 
             }

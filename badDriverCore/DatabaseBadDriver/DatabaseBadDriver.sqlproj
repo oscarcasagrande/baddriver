@@ -87,5 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="procs\03 - procUser_update.sql" />
+    <Build Include="procs\19 - procDriverTop10Worst_Read.sql" />
   </ItemGroup>
 </Project>

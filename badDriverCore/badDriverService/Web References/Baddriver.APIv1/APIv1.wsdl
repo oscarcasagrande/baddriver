@@ -24,6 +24,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Supplier" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncidentQuantity" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Incidents" type="tns:ArrayOfIncident" />
         </s:sequence>
       </s:complexType>
@@ -34,9 +35,12 @@
       </s:complexType>
       <s:complexType name="Incident">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Latitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Longitude" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Photos" type="tns:ArrayOfPhoto" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverId" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfPhoto">
@@ -49,6 +53,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncidentId" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="ListDriversCount">
@@ -61,6 +66,42 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ListAllDrivers">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListAllDriversResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllDriversResult" type="tns:ArrayOfDriver" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListLastDrivers">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListLastDriversResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListLastDriversResult" type="tns:ArrayOfDriver" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListPlacesWithMoreIncidents">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListPlacesWithMoreIncidentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListPlacesWithMoreIncidentsResult" type="tns:ArrayOfKeyValuePairOfStringString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfKeyValuePairOfStringString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePairOfStringString" type="tns:KeyValuePairOfStringString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="KeyValuePairOfStringString" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ListWorstDriversSoapIn">
@@ -75,6 +116,24 @@
   <wsdl:message name="ListDriversCountSoapOut">
     <wsdl:part name="parameters" element="tns:ListDriversCountResponse" />
   </wsdl:message>
+  <wsdl:message name="ListAllDriversSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAllDrivers" />
+  </wsdl:message>
+  <wsdl:message name="ListAllDriversSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAllDriversResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListLastDriversSoapIn">
+    <wsdl:part name="parameters" element="tns:ListLastDrivers" />
+  </wsdl:message>
+  <wsdl:message name="ListLastDriversSoapOut">
+    <wsdl:part name="parameters" element="tns:ListLastDriversResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListPlacesWithMoreIncidentsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListPlacesWithMoreIncidents" />
+  </wsdl:message>
+  <wsdl:message name="ListPlacesWithMoreIncidentsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListPlacesWithMoreIncidentsResponse" />
+  </wsdl:message>
   <wsdl:portType name="APIv1Soap">
     <wsdl:operation name="ListWorstDrivers">
       <wsdl:input message="tns:ListWorstDriversSoapIn" />
@@ -83,6 +142,18 @@
     <wsdl:operation name="ListDriversCount">
       <wsdl:input message="tns:ListDriversCountSoapIn" />
       <wsdl:output message="tns:ListDriversCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListAllDrivers">
+      <wsdl:input message="tns:ListAllDriversSoapIn" />
+      <wsdl:output message="tns:ListAllDriversSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListLastDrivers">
+      <wsdl:input message="tns:ListLastDriversSoapIn" />
+      <wsdl:output message="tns:ListLastDriversSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListPlacesWithMoreIncidents">
+      <wsdl:input message="tns:ListPlacesWithMoreIncidentsSoapIn" />
+      <wsdl:output message="tns:ListPlacesWithMoreIncidentsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="APIv1Soap" type="tns:APIv1Soap">
@@ -105,6 +176,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ListAllDrivers">
+      <soap:operation soapAction="http://tempuri.org/ListAllDrivers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListLastDrivers">
+      <soap:operation soapAction="http://tempuri.org/ListLastDrivers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListPlacesWithMoreIncidents">
+      <soap:operation soapAction="http://tempuri.org/ListPlacesWithMoreIncidents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="APIv1Soap12" type="tns:APIv1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -119,6 +217,33 @@
     </wsdl:operation>
     <wsdl:operation name="ListDriversCount">
       <soap12:operation soapAction="http://tempuri.org/ListDriversCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAllDrivers">
+      <soap12:operation soapAction="http://tempuri.org/ListAllDrivers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListLastDrivers">
+      <soap12:operation soapAction="http://tempuri.org/ListLastDrivers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListPlacesWithMoreIncidents">
+      <soap12:operation soapAction="http://tempuri.org/ListPlacesWithMoreIncidents" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

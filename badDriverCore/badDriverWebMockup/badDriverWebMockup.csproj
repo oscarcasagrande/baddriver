@@ -79,6 +79,7 @@
     <Content Include="Contents\css\bootstrap.min.css" />
     <Content Include="Contents\css\carousel.css" />
     <Content Include="Contents\css\cover.css" />
+    <Content Include="Contents\css\Css Centralizar.css" />
     <Content Include="Contents\css\footer.css" />
     <Content Include="emailTemplate\postAnswer.html" />
     <Content Include="emailTemplate\uploadPhotos.html" />
