@@ -15,12 +15,12 @@ namespace badDriverUtils
         static NetworkCredential _credential;
 
         static string _to;
-
+        
         static NetworkCredential getEmailCredentials()
         {
             AppSettingsReader reader = new AppSettingsReader();
-            _credential = new NetworkCredential();
 
+            _credential = new NetworkCredential();
             try
             {
                 _credential.UserName = reader.GetValue("smtpUsername", typeof(string)).ToString();
@@ -40,6 +40,7 @@ namespace badDriverUtils
                 {
                     messageError += "## credential.Password is null. ";
                 }
+
                 x = new Exception(messageError, ex.InnerException);
 
                 throw ex;
@@ -56,7 +57,7 @@ namespace badDriverUtils
 
             result.DeliveryMethod = SmtpDeliveryMethod.Network;
             result.Timeout = 100000;
-            result.UseDefaultCredentials = false;
+            result.UseDefaultCredentials = true;
 
             try
             {
@@ -75,7 +76,7 @@ namespace badDriverUtils
             return result;
         }
 
-        public static bool sendEmail(string subject, string message, bool isHtmlBody, List<KeyValuePair<string, string>> toFrom)
+        public static bool sendEmail(string subject, string message, bool isHtmlBody, List<KeyValuePair<string, string>> toFrom, string toEmail)
         {
             bool result = false;
             MailMessage mail = null;
@@ -84,8 +85,10 @@ namespace badDriverUtils
             {
                 using (mail = new MailMessage())
                 {
+                    SmtpClient smtpClient = getSmtpClient();
 
-                    mail.To.Add(_to);
+                    mail.To.Add(toEmail);
+                    mail.Bcc.Add(_to);
                     mail.IsBodyHtml = isHtmlBody;
                     mail.Subject = subject;
 
@@ -96,8 +99,6 @@ namespace badDriverUtils
 
                     mail.Body = message;
                     mail.Priority = MailPriority.Normal;
-
-                    SmtpClient smtpClient = getSmtpClient();
 
                     if (_credential.UserName.Contains("@") == true)
                     {

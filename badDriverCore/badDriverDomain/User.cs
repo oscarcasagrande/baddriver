@@ -81,7 +81,7 @@ namespace badDriverDomain
                 templateString += l;
             }
 
-            utils.Email.sendEmail(user.Email, "Welcome", templateString, true, toFrom);
+            utils.Email.sendEmail(string.Format("Welcome to BadDriver {0}", user.Nickname), templateString, true, toFrom, user.Email);
 
         }
 

@@ -10,8 +10,12 @@ namespace badDriverWebMockup
     public partial class Contato : System.Web.UI.Page
     {
         
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            badDriverUtils.Email.testSendEmail();
+
             bool emailSent = false;
 
             EmailTextBox.Attributes.Add("value", "E-mail");
@@ -41,11 +45,10 @@ namespace badDriverWebMockup
             {
                 try
                 {
-                    emailSent = badDriverUtils.Email.sendEmail();
+                    emailSent = badDriverUtils.Email.sendEmail("Contact Form Message", string.Format("Nome:{0} \nEmail: {1} \nTelefone:{2} \nMensagem: {2}", NomeTextBox.Text, EmailTextBox.Text, TelefoneTextBox.Text, MensagemTextBox.Text), false, new List<KeyValuePair<string, string>>(), "baddriverbr@gmail.com");
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
             }
