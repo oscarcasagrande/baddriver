@@ -95,6 +95,9 @@
     <None Include="Web References\Baddriver.APIv1\Driver.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\Baddriver.APIv1\KeyValuePairOfStringString.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\Baddriver.APIv1\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
